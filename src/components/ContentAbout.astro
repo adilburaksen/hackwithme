@@ -1,86 +1,67 @@
 ---
 import { Code } from 'astro:components';
 
-const code = `interface Developer {
+const code = `interface AppSecEngineer {
     name: string;
     skills: string[];
+    tools: string[];
     interests: string[];
 };
 
-interface TechStack {
-    devOps: string[];
-    backend: string[];
-   frontend: string[];
-};
+type ContactType = 'github' | 'twitter' | 'linkedIn' | 'email';
 
-type ContactType = 'github' | 'twitter' | 'linkedIn' | 'xing' | 'email';
+const tools = [
+    'Burp Suite',
+    'Fortify SSC',
+    'Invicti DAST',
+    'Jenkins',
+    'GitHub Actions',
+    'Docker',
+    'Jira',
+    'Confluence',
+    'Nmap',
+    'Metasploit',
+    'Postman',
+    'Bash',
+    'PowerShell',
+];
 
-const techStack: TechStack = {
-    devOps: [
-        'GitLab',
-        'GitHub',
-        'Cloudflare',
-        'Docker'
-    ],
-    frontend: [
-        'Angular',
-        'JavaScript',
-        'TypeScript',
-        'TailwindCSS',
-        'PrimeNG',
-        'Astro',
-        'Ionic',
-        'Stencil',
-        'Capacitor',
-        'SCSS',
-        'Markdown',
-        'WordPress'
-    ],
-    backend: [
-        'Supabase',
-        'Node.js',
-        'Bun',
-        'Deno',
-        'PostgreSQL',
-        'MySQL',
-        'S3 Storage',
-        'Resend'
-    ]
-};
-
-// Developer profile
-const me: Developer = {
-    name: 'Dejan Vi.',
+const me: AppSecEngineer = {
+    name: 'Adil Burak Şen',
     skills: [
-        ...techStack.devOps,
-        ...techStack.backend,
-        ...techStack.frontend
+        'Web Application Security',
+        'API Security',
+        'Secure Code Review',
+        'Static & Dynamic Analysis',
+        'CI/CD Security Integration',
+        'Security Automation',
+        'False Positive Reduction',
+        'Pentest Reporting'
     ],
+    tools: tools,
     interests: [
-        'Open Source',
-        'Security',
-        'Privacy',
-        'Performance',
-        'Self-Hosting',
-        'Networking'
+        'Hack The Box',
+        'TryHackMe',
+        'Bug Bounty',
+        'OWASP Top 10 & API Top 10',
+        'Security Tooling',
+        'Exploit Reproduction',
+        'Offensive Lab Work'
     ]
 };
 
-// Contact function
 const contact = (type: ContactType): string => {
     switch (type) {
         case 'github':
-            return 'https://github.com/devidevio';
+            return 'https://github.com/adilburaksen';
         case 'twitter':
-            return 'https://x.com/devidev_io';
+            return 'https://x.com/adilburaksen';
         case 'linkedIn':
-            return 'https://www.linkedin.com/in/dejan-vi';
-        case 'xing':
-            return 'https://www.xing.com/profile/Dejan_Vintonjiv';
+            return 'https://www.linkedin.com/in/adilburaksen';
         case 'email':
-            return 'hi@devidev.io';
+            return 'adilburaksen@proton.me';
         default:
-            return 'Send fax.';
+            return 'Just ping me on Hack The Box.';
     }
 };
 
