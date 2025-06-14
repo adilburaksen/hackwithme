@@ -87,3 +87,11 @@ import ContentBlog from '../components/ContentBlog.astro';
     @apply block opacity-100;
   }
   #tab2:checked ~ .flex
+  
+  /* Tab 3 - Blog */
+  #tab3:checked ~ * #content3 {
+    @apply block opacity-100;
+  }
+  #tab3:checked ~ .flex .tab-link:nth-child(3) {
+    @apply border-b-2 border-b-primary;
+  }
