@@ -10,7 +10,19 @@ const code = `interface AppSecEngineer {
 
 type ContactType = 'github' | 'twitter' | 'linkedIn' | 'email';
 
-const tools = [
+const me: AppSecEngineer = {
+    name: 'Adil Burak Şen',
+    skills: [
+        'Web Application Security',
+        'API Security',
+        'Secure Code Review',
+        'Static & Dynamic Analysis',
+        'CI/CD Security Integration',
+        'Security Automation',
+        'False Positive Reduction',
+        'Pentest Reporting'
+    ],
+    tools: [
     'Burp Suite',
     'Fortify SSC',
     'Invicti DAST',
@@ -24,21 +36,7 @@ const tools = [
     'Postman',
     'Bash',
     'PowerShell',
-];
-
-const me: AppSecEngineer = {
-    name: 'Adil Burak Şen',
-    skills: [
-        'Web Application Security',
-        'API Security',
-        'Secure Code Review',
-        'Static & Dynamic Analysis',
-        'CI/CD Security Integration',
-        'Security Automation',
-        'False Positive Reduction',
-        'Pentest Reporting'
     ],
-    tools: tools,
     interests: [
         'Hack The Box',
         'TryHackMe',
