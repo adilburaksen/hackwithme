@@ -1,20 +1,91 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# hackwith.me
 
-# Run and deploy your AI Studio app
+> A minimalist, research-focused personal website designed for clarity and depth.
+> Built for **Adil Burak a.k.a. 0racLe**.
 
-This contains everything you need to run your app locally.
+## ⚡ Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Acm9opujUz762hMAku89_vqTtIlXywnD
+- **Core:** React 18 + TypeScript
+- **Build System:** Vite
+- **Styling:** Tailwind CSS (via CDN for lightweight setup) + CSS Variables for Theming
+- **Type Safety:** Strict TypeScript configuration
+- **Deployment:** Netlify (Ready)
 
-## Run Locally
+## 🚀 Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/adilburaksen/hackwithme.git
+
+# 2. Navigate to directory
+cd hackwithme
+
+# 3. Install dependencies
+npm install
+```
+
+### Development
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` to view the site.
+
+### Build for Production
+
+Compile TypeScript and build assets for deployment:
+
+```bash
+npm run build
+```
+
+The output will be in the `dist/` directory.
+
+## 🎨 Features
+
+- **Minimalist UI:** Terminal-inspired aesthetic with heavy focus on typography (JetBrains Mono & Newsreader).
+- **Theme System:** Native Light/Dark mode toggler using CSS variables.
+- **Content System:** Localized Markdown-like blog rendering with support for external GIF/Image embedding.
+- **Responsive:** Fully responsive design for mobile and desktop.
+
+## 🛠 Project Structure
+
+```
+hackwithme/
+├── src/
+│   ├── components/    # UI Components (PostList, About, etc.)
+│   ├── services/      # External integrations (Gemini, etc.)
+│   ├── App.tsx        # Main Router/Layout logic
+│   ├── main.tsx       # Entry point
+│   ├── constants.ts   # Content data (Posts, Profile config)
+│   └── types.ts       # TypeScript interfaces
+├── public/            # Static assets
+├── index.html         # Entry HTML
+├── netlify.toml       # Deployment configuration
+├── package.json       # Dependencies
+└── vite.config.ts     # Vite configuration
+```
+
+## 🚢 Deployment
+
+This project is configured for **Netlify**.
+
+1. Connect your GitHub repository to Netlify.
+2. Netlify will automatically detect the settings from `netlify.toml`:
+   - **Build Command:** `npm run build`
+   - **Publish Directory:** `dist`
+
+## 📄 License
+
+All content © 2025 Adil Burak.
+Codebase is open for educational purposes.
