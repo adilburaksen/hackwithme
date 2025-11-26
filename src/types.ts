@@ -1,13 +1,11 @@
-
-
 export interface Post {
   id: string;
   title: string;
   date: string;
   summary: string;
-  content: string; // Simulated content for the AI to read
+  content: string;
   tags: string[];
-  externalLink?: string; // Optional URL to external post (e.g. Beehiiv)
+  externalLink?: string;
 }
 
 export interface Project {
@@ -25,10 +23,4 @@ export enum View {
   WRITING = 'WRITING',
   PROJECTS = 'PROJECTS',
   POST = 'POST'
-}
-
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-  isThinking?: boolean;
 }
