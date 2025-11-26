@@ -127,7 +127,9 @@ const App: React.FC = () => {
         return (
           <BlogPost 
             post={selectedPost} 
+            allPosts={RESEARCH_POSTS}
             onBack={handleBackToWriting} 
+            onPostClick={handlePostClick}
           />
         );
 

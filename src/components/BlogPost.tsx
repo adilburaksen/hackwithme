@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Post } from '../types';
 import ToastButton from './ToastButton';
+import hljs from 'highlight.js';
+import '../atom-one-dark.css';
 
 interface BlogPostProps {
   post: Post;
+  allPosts: Post[];
   onBack: () => void;
+  onPostClick: (post: Post) => void;
 }
 
-const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
+const BlogPost: React.FC<BlogPostProps> = ({ post, allPosts, onBack, onPostClick }) => {
   const [showCopied, setShowCopied] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const wordsPerMinute = 200;
   const wordCount = post.content.split(/\s+/).length;
@@ -20,12 +25,24 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
   const encodedPostUrl = encodeURIComponent(postUrl);
   const encodedTitle = encodeURIComponent(post.title);
 
+  const currentIndex = allPosts.findIndex(p => p.id === post.id);
+  const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(postUrl).then(() => {
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
     });
   };
+
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block as HTMLElement);
+      });
+    }
+  }, [post.content]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,16 +52,90 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
       const progress = (scrollTop / (scrollHeight - element.clientHeight)) * 100;
       setScrollProgress(progress);
     };
+    
+    window.scrollTo(0, 0);
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [post]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'j' && nextPost) {
+        onPostClick(nextPost);
+      } else if (e.key === 'k' && prevPost) {
+        onPostClick(prevPost);
+      } else if (e.key === 'Escape') {
+        onBack();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onBack, onPostClick, nextPost, prevPost]);
+
+  const renderContent = () => {
+    const lines = post.content.split('\n');
+    const elements = [];
+    let inCodeBlock = false;
+    let codeLang = '';
+    let codeContent = '';
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (line.startsWith('```')) {
+        if (inCodeBlock) {
+          elements.push(
+            <pre key={`code-${i}`} className="rounded-md overflow-x-auto text-sm my-8 font-mono bg-[#282c34] p-4">
+              <code className={codeLang ? `language-${codeLang}`: ''}>
+                {codeContent.trim()}
+              </code>
+            </pre>
+          );
+          inCodeBlock = false;
+          codeContent = '';
+          codeLang = '';
+        } else {
+          inCodeBlock = true;
+          codeLang = line.substring(3).trim();
+        }
+      } else if (inCodeBlock) {
+        codeContent += line + '\n';
+      } else {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('https://') && (trimmed.includes('medium.com') || trimmed.match(/\.(gif|jpg|png|webp|jpeg)$/i))) {
+          elements.push(
+            <div key={i} className="my-10">
+               <img 
+                  src={trimmed} 
+                  alt="Post visual" 
+                  className="w-full max-w-2xl mx-auto rounded-sm opacity-90 hover:opacity-100 transition-opacity" 
+               />
+            </div>
+          );
+        } else if (trimmed) {
+          elements.push(
+            <p key={i} className="mb-6 font-serif opacity-90">
+              {line}
+            </p>
+          );
+        } else {
+          elements.push(<div key={i} className="h-6" />);
+        }
+      }
+    }
+    return elements;
+  };
 
   return (
-    <article className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <article ref={contentRef} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
        <div 
-        className="fixed top-0 left-0 w-full h-[2px] bg-text transition-all duration-150 ease-out"
-        style={{ width: `${scrollProgress}%` }}
+        className="fixed top-0 left-0 h-[2px] bg-text z-10"
+        style={{ width: `${scrollProgress}%`, transition: 'width 0.1s ease-out' }}
       />
       <button 
         onClick={onBack}
@@ -72,31 +163,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
       </header>
 
       <div className="max-w-none text-text text-lg leading-loose">
-        {post.content.split('\n').map((line, idx) => {
-          const trimmed = line.trim();
-          // Check for Image URLs (Medium format or standard extensions)
-          if (trimmed.startsWith('https://') && (trimmed.includes('medium.com') || trimmed.match(/\.(gif|jpg|png|webp|jpeg)$/i))) {
-            return (
-              <div key={idx} className="my-10">
-                 <img 
-                    src={trimmed} 
-                    alt="Post visual" 
-                    className="w-full max-w-2xl mx-auto rounded-sm opacity-90 hover:opacity-100 transition-opacity" 
-                 />
-              </div>
-            );
-          }
-          
-          if (!trimmed) {
-             return <div key={idx} className="h-6" />;
-          }
-
-          return (
-            <p key={idx} className="mb-6 font-serif opacity-90">
-              {line}
-            </p>
-          );
-        })}
+        {renderContent()}
       </div>
 
       <div className="mt-16 pt-8 border-t border-bordercolor flex items-center justify-center gap-6">
@@ -120,6 +187,32 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
             </div>
         </div>
       </div>
+
+      <nav className="mt-16 pt-10 border-t border-bordercolor grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+        {prevPost ? (
+          <div 
+            onClick={() => onPostClick(prevPost)} 
+            className="cursor-pointer group text-left border border-transparent hover:border-bordercolor p-4 -m-4 rounded transition-colors"
+          >
+            <p className="font-mono text-xs text-subtext mb-3 tracking-widest uppercase">&larr; Previous Post</p>
+            <p className="font-serif text-text text-lg group-hover:underline underline-offset-4 decoration-1 transition-all">
+              {prevPost.title}
+            </p>
+          </div>
+        ) : <div />}
+
+        {nextPost ? (
+          <div 
+            onClick={() => onPostClick(nextPost)} 
+            className="cursor-pointer group sm:text-right border border-transparent hover:border-bordercolor p-4 -m-4 rounded transition-colors"
+          >
+             <p className="font-mono text-xs text-subtext mb-3 tracking-widest uppercase">Next Post &rarr;</p>
+             <p className="font-serif text-text text-lg group-hover:underline underline-offset-4 decoration-1 transition-all">
+               {nextPost.title}
+             </p>
+          </div>
+        ) : <div />}
+      </nav>
 
       <ToastButton postId={post.id} />
     </article>
