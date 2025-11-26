@@ -6,7 +6,7 @@ export const AUTHOR_NAME = "Adil Burak a.k.a. 0racLe";
 export const AUTHOR_PROFILE = {
   role: "Senior Application Security / Red Team Engineer",
   location: "Abu Dhabi, United Arab Emirates",
-  bio: "OSCP-certified Application-Security & Red-Team Engineer with 9+ years in finance, telecom, aviation, and insurance. Expert in Penetration Testing, API security, secure SDLC and DevSecOps automation.",
+  bio: "OSCP-certified Application-Security & Red-Team Engineer with 10+ years in finance, telecom, aviation, and insurance. Expert in Penetration Testing, API security, secure SDLC and DevSecOps automation.",
   socials: {
     linkedin: "https://www.linkedin.com/in/adilburaksen/",
     github: "https://github.com/adilburaksen",
@@ -36,7 +36,7 @@ export const AUTHOR_PROFILE = {
       company: "Barikat Cybersecurity",
       role: "Red Team Senior Specialist",
       period: "2022 - 2023",
-      highlight: "Led assessments for Istanbul Grand Airport (IGA). Remediated risk-ranked vulns with IT/OT teams."
+      highlight: "Led assessments for Aviation Sector. Remediated risk-ranked vulns with IT/OT teams."
     },
     {
       company: "Ana Sigorta",

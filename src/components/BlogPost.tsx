@@ -1,5 +1,6 @@
 import React from 'react';
 import { Post } from '../types';
+import ToastButton from './ToastButton';
 
 interface BlogPostProps {
   post: Post;
@@ -59,6 +60,8 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack }) => {
           );
         })}
       </div>
+
+      <ToastButton postId={post.id} />
     </article>
   );
 };
