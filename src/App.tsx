@@ -115,7 +115,7 @@ const App: React.FC = () => {
           className="font-mono text-xs text-subtext hover:text-text cursor-pointer mb-4 inline-block"
           onClick={() => setCurrentView(View.HOME)}
         >
-          {SITE_TITLE}
+          <span className="text-text">&gt;_</span> {SITE_TITLE}
         </div>
         {/* Footer enabled on all views including POST */}
         {currentView !== View.POST && (
