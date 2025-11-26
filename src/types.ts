@@ -22,5 +22,6 @@ export enum View {
   ABOUT = 'ABOUT',
   WRITING = 'WRITING',
   PROJECTS = 'PROJECTS',
-  POST = 'POST'
+  POST = 'POST',
+  NOT_FOUND = 'NOT_FOUND'
 }

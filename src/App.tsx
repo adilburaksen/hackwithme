@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import PostList from './components/PostList';
 import ProjectList from './components/ProjectList';
 import About from './components/About';
 import BlogPost from './components/BlogPost';
 import ThemeToggle from './components/ThemeToggle';
+import NotFound from './components/NotFound';
 import { View, Post } from './types';
 import { RESEARCH_POSTS, PROJECTS, SITE_TITLE, AUTHOR_NAME, AUTHOR_PROFILE } from './constants';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>(View.HOME);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+
+  useEffect(() => {
+    const redirected = sessionStorage.getItem('redirect');
+    if (redirected) {
+      sessionStorage.removeItem('redirect');
+      setCurrentView(View.NOT_FOUND);
+    }
+  }, []);
 
   const handlePostClick = (post: Post) => {
     setSelectedPost(post);
@@ -21,6 +30,10 @@ const App: React.FC = () => {
   const handleBackToWriting = () => {
     setSelectedPost(null);
     setCurrentView(View.WRITING);
+  };
+
+  const handleNavigateHome = () => {
+    setCurrentView(View.HOME);
   };
 
   const renderContent = () => {
@@ -101,8 +114,11 @@ const App: React.FC = () => {
           </div>
         );
         
+      case View.NOT_FOUND:
+        return <NotFound onNavigateHome={handleNavigateHome} />;
+
       default:
-        return null;
+        return <NotFound onNavigateHome={handleNavigateHome} />;
     }
   };
 
