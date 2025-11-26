@@ -14,6 +14,38 @@ const App: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#post/')) {
+        const postId = hash.substring(6);
+        const post = RESEARCH_POSTS.find(p => p.id === postId);
+        if (post) {
+          setSelectedPost(post);
+          setCurrentView(View.POST);
+        } else {
+          setCurrentView(View.NOT_FOUND);
+        }
+      } else if (hash === '#about') {
+        setCurrentView(View.ABOUT);
+      } else if (hash === '#writing') {
+        setCurrentView(View.WRITING);
+      } else if (hash === '#projects') {
+        setCurrentView(View.PROJECTS);
+      } else {
+        setCurrentView(View.HOME);
+      }
+    };
+
+    handleHashChange(); // Initial check
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+
+  useEffect(() => {
     const redirected = sessionStorage.getItem('redirect');
     if (redirected) {
       sessionStorage.removeItem('redirect');
@@ -24,16 +56,19 @@ const App: React.FC = () => {
   const handlePostClick = (post: Post) => {
     setSelectedPost(post);
     setCurrentView(View.POST);
+    window.location.hash = `post/${post.id}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToWriting = () => {
     setSelectedPost(null);
     setCurrentView(View.WRITING);
+    window.location.hash = 'writing';
   };
 
   const handleNavigateHome = () => {
     setCurrentView(View.HOME);
+    window.location.hash = '';
   };
 
   const renderContent = () => {
