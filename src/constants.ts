@@ -64,6 +64,15 @@ export const AUTHOR_PROFILE = {
 
 export const RESEARCH_POSTS: Post[] = [
   {
+    id: 'apis-from-subroutine-libraries-to-zero-trust',
+    title: 'APIs: From Subroutine Libraries to Zero Trust — A Technical History',
+    date: '2026-02-25',
+    tags: ['API', 'Architecture', 'Security'],
+    summary: 'A deep dive into the evolution of APIs, from 1940s calling conventions to modern distributed security architectures.',
+    content: '',
+    externalLink: 'https://medium.com/@adilburaksen/apis-from-subroutine-libraries-to-zero-trust-a-technical-history-f614912b76c7'
+  },
+  {
     id: 'the-age-of-insecurity',
     title: 'The Age of Insecurity: Human Nature in a Tech-Driven World',
     date: '2025-04-10',
