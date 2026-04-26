@@ -20,6 +20,10 @@ const App: React.FC = () => {
         const postId = hash.substring(6);
         const post = RESEARCH_POSTS.find(p => p.id === postId);
         if (post) {
+          if (post.externalLink) {
+            window.location.replace(post.externalLink);
+            return;
+          }
           setSelectedPost(post);
           setCurrentView(View.POST);
         } else {
