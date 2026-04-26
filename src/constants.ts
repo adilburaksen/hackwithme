@@ -69,7 +69,6 @@ export const RESEARCH_POSTS: Post[] = [
     date: '2026-02-25',
     tags: ['API', 'Architecture', 'Security'],
     summary: 'A deep dive into the evolution of APIs, from 1940s calling conventions to modern distributed security architectures.',
-    content: '',
     externalLink: 'https://medium.com/@adilburaksen/apis-from-subroutine-libraries-to-zero-trust-a-technical-history-f614912b76c7'
   },
   {
@@ -78,7 +77,6 @@ export const RESEARCH_POSTS: Post[] = [
     date: '2025-04-10',
     tags: ['Society', 'Tech', 'AI'],
     summary: 'Reflections on social insecurity, the false conflict between humans and machines, and navigating the golden age of digital literacy.',
-    content: '',
     externalLink: 'https://medium.com/@adilburaksen/the-age-of-insecurity-human-nature-in-a-tech-driven-world-d1d52a7bc0fe'
   },
   {
@@ -87,7 +85,6 @@ export const RESEARCH_POSTS: Post[] = [
     date: '2025-04-06',
     tags: ['Personal', 'Growth', 'Reflection'],
     summary: 'Reflections on the passage of time, the skill of laziness, and breaking the armor of inertia.',
-    content: '',
     externalLink: 'https://medium.com/@adilburaksen/how-long-has-it-been-1f4823ba2530'
   }
 ];

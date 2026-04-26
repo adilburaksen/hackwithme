@@ -4,10 +4,9 @@ import { Post } from '../types';
 interface PostListProps {
   posts: Post[];
   limit?: number;
-  onPostClick?: (post: Post) => void;
 }
 
-const PostList: React.FC<PostListProps> = ({ posts, limit, onPostClick }) => {
+const PostList: React.FC<PostListProps> = ({ posts, limit }) => {
   const displayPosts = limit ? posts.slice(0, limit) : posts;
 
   return (
@@ -20,31 +19,20 @@ const PostList: React.FC<PostListProps> = ({ posts, limit, onPostClick }) => {
               <span className="font-mono text-xs text-subtext shrink-0 w-24 tabular-nums mb-1 sm:mb-0">
                 {post.date}
               </span>
-              
+
               <div className="flex flex-col">
-                {post.externalLink ? (
-                  <a 
-                    href={post.externalLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 w-fit"
-                  >
-                    <h3 className="text-base sm:text-lg font-serif font-medium text-text group-hover:text-hovercolor transition-colors border-b border-transparent group-hover:border-hovercolor">
-                      {post.title}
-                    </h3>
-                    <span className="text-[10px] text-subtext opacity-50 group-hover:opacity-100 transition-opacity -mt-1 transform group-hover:translate-x-0.5 duration-200">↗</span>
-                  </a>
-                ) : (
-                  <button 
-                    onClick={() => onPostClick && onPostClick(post)}
-                    className="text-left w-fit"
-                  >
-                    <h3 className="text-base sm:text-lg font-serif font-medium text-text group-hover:text-hovercolor transition-colors border-b border-transparent group-hover:border-hovercolor">
-                      {post.title}
-                    </h3>
-                  </button>
-                )}
-                
+                <a
+                  href={post.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 w-fit"
+                >
+                  <h3 className="text-base sm:text-lg font-serif font-medium text-text group-hover:text-hovercolor transition-colors border-b border-transparent group-hover:border-hovercolor">
+                    {post.title}
+                  </h3>
+                  <span className="text-[10px] text-subtext opacity-50 group-hover:opacity-100 transition-opacity -mt-1 transform group-hover:translate-x-0.5 duration-200">↗</span>
+                </a>
+
                 {!limit && (
                    <p className="mt-2 text-sm text-subtext font-serif leading-relaxed max-w-xl opacity-80">
                      {post.summary}
