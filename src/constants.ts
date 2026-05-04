@@ -6,7 +6,7 @@ export const AUTHOR_NAME = "Adil Burak Şen a.k.a. 0racLe";
 export const AUTHOR_PROFILE = {
   role: "Senior Application Security & Red Team Engineer",
   location: "Istanbul, Turkey · Open to Europe / UK / Remote",
-  bio: "OSCP+-certified Application Security & Red Team Engineer with 8+ years across banking, telecom, aviation, insurance, and e-commerce. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated. Published CVE (CVE-2026-31974). Hands-on across penetration testing, API security, threat modeling, secure SDLC, DevSecOps automation, and AI/LLM security.",
+  bio: "OSCP+ certified Application Security & Red Team Engineer with 8+ years across banking, telecom, aviation, insurance, and e-commerce. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated. Published CVE (CVE-2026-31974). Hands-on across penetration testing, API security, threat modeling, secure SDLC, DevSecOps automation, and AI/LLM security.",
   socials: {
     linkedin: "https://www.linkedin.com/in/adilburaksen/",
     github: "https://github.com/adilburaksen",
