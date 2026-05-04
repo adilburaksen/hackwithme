@@ -125,6 +125,7 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
 ];
 
 export const ACKNOWLEDGMENTS: Acknowledgment[] = [
+  // Bugcrowd
   { company: 'Mastercard', platform: 'Bugcrowd' },
   { company: 'Dell', platform: 'Bugcrowd' },
   { company: 'Sophos', platform: 'Bugcrowd' },
@@ -136,5 +137,18 @@ export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   { company: 'Ecommpay', platform: 'Bugcrowd' },
   { company: 'Netgear', platform: 'Bugcrowd' },
   { company: 'Constant Contact', platform: 'Bugcrowd' },
-  { company: 'BlueJeans Network', platform: 'Bugcrowd' }
+  { company: 'BlueJeans Network', platform: 'Bugcrowd' },
+  // YesWeHack
+  { company: 'Swiss Post', platform: 'YesWeHack' },
+  { company: 'OVHCloud', platform: 'YesWeHack' },
+  { company: 'Deezer', platform: 'YesWeHack' },
+  { company: 'Keycloak', platform: 'YesWeHack' },
+  { company: 'BIND 9', platform: 'YesWeHack' },
+  { company: 'OpenProject', platform: 'YesWeHack' },
+  { company: 'StashAway', platform: 'YesWeHack' },
+  { company: 'Superbank', platform: 'YesWeHack' },
+  { company: 'Netcloud', platform: 'YesWeHack' },
+  { company: 'Ohtuleht', platform: 'YesWeHack' },
+  // Immunefi
+  { company: 'Kiln (dApp / Infra)', platform: 'Immunefi' }
 ];

@@ -45,18 +45,29 @@ const Disclosures: React.FC = () => {
         <div className="sm:col-span-1">
           <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Acknowledgments</h2>
         </div>
-        <div className="sm:col-span-3">
-          <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl mb-6">
-            Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated.
+        <div className="sm:col-span-3 space-y-8">
+          <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl">
+            Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, Intigriti, and Synack Red Team.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-3">
-            {ACKNOWLEDGMENTS.map((entry) => (
-              <div key={entry.company} className="font-mono text-sm text-text">
-                {entry.company}
-                <span className="block font-mono text-xs text-subtext opacity-70 mt-0.5">{entry.platform}</span>
+          {Array.from(
+            ACKNOWLEDGMENTS.reduce((map, entry) => {
+              const list = map.get(entry.platform) ?? [];
+              list.push(entry.company);
+              map.set(entry.platform, list);
+              return map;
+            }, new Map<string, string[]>())
+          ).map(([platform, companies]) => (
+            <div key={platform}>
+              <h3 className="font-mono text-xs text-subtext opacity-70 mb-3 border-b border-bordercolor pb-1">{platform}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">
+                {companies.map((company) => (
+                  <div key={company} className="font-mono text-sm text-text">
+                    {company}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
