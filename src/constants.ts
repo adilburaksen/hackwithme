@@ -97,7 +97,16 @@ export const RESEARCH_POSTS: Post[] = [
   }
 ];
 
-export const PROJECTS: Project[] = [];
+export const PROJECTS: Project[] = [
+  {
+    id: 'cve-2025-25257-exploit-tool',
+    name: 'CVE-2025-25257 Exploit Tool',
+    description: 'Public exploit tool for pre-authentication SQL injection in Fortinet FortiWeb Fabric Connector (CVSS 9.8). Detects vulnerable instances and demonstrates impact.',
+    link: 'https://github.com/adilburaksen/CVE-2025-25257-Exploit-Tool',
+    year: '2025',
+    status: 'Active'
+  }
+];
 
 export const PUBLISHED_CVES: PublishedCVE[] = [
   {
@@ -110,17 +119,6 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
     description: 'Server-Side Request Forgery in OpenProject. Coordinated disclosure with the OpenProject security team; fix merged upstream in v17.2.0.',
     link: 'https://github.com/opf/openproject/security/advisories/GHSA-9wr7-j98g-2jh3',
     role: 'Reporter'
-  },
-  {
-    id: 'cve-2025-25257',
-    cve: 'CVE-2025-25257',
-    title: 'Pre-auth SQL Injection in Fortinet FortiWeb',
-    vendor: 'Fortinet',
-    severity: 'Critical · CVSS 9.8',
-    year: '2025',
-    description: 'Public exploit tool for pre-authentication SQL injection in Fortinet FortiWeb Fabric Connector. Detects vulnerable instances and demonstrates impact.',
-    link: 'https://github.com/adilburaksen/CVE-2025-25257-Exploit-Tool',
-    role: 'Exploit Author'
   }
 ];
 
