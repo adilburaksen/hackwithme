@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import PostList from './components/PostList';
 import ProjectList from './components/ProjectList';
 import About from './components/About';
+import Disclosures from './components/Disclosures';
 import ThemeToggle from './components/ThemeToggle';
 import NotFound from './components/NotFound';
 import { View } from './types';
@@ -12,8 +13,10 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>(View.HOME);
 
   useEffect(() => {
-    const handleHashChange = () => {
+    const resolveView = () => {
       const hash = window.location.hash;
+      const path = window.location.pathname.replace(/\/+$/, '');
+
       if (hash.startsWith('#post/')) {
         const postId = hash.substring(6);
         const post = RESEARCH_POSTS.find(p => p.id === postId);
@@ -22,32 +25,40 @@ const App: React.FC = () => {
           return;
         }
         setCurrentView(View.NOT_FOUND);
-      } else if (hash === '#about') {
-        setCurrentView(View.ABOUT);
-      } else if (hash === '#writing') {
-        setCurrentView(View.WRITING);
-      } else if (hash === '#projects') {
-        setCurrentView(View.PROJECTS);
-      } else {
-        setCurrentView(View.HOME);
+        return;
+      }
+
+      const route = hash.replace(/^#/, '') || path.replace(/^\//, '');
+
+      switch (route) {
+        case 'about':
+          setCurrentView(View.ABOUT);
+          break;
+        case 'writing':
+          setCurrentView(View.WRITING);
+          break;
+        case 'projects':
+          setCurrentView(View.PROJECTS);
+          break;
+        case 'disclosures':
+          setCurrentView(View.DISCLOSURES);
+          break;
+        case '':
+          setCurrentView(View.HOME);
+          break;
+        default:
+          setCurrentView(View.NOT_FOUND);
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
+    resolveView();
+    window.addEventListener('hashchange', resolveView);
+    window.addEventListener('popstate', resolveView);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('hashchange', resolveView);
+      window.removeEventListener('popstate', resolveView);
     };
-  }, []);
-
-
-  useEffect(() => {
-    const redirected = sessionStorage.getItem('redirect');
-    if (redirected) {
-      sessionStorage.removeItem('redirect');
-      setCurrentView(View.NOT_FOUND);
-    }
   }, []);
 
   const handleNavigateHome = () => {
@@ -116,6 +127,9 @@ const App: React.FC = () => {
             )}
           </div>
         );
+
+      case View.DISCLOSURES:
+        return <Disclosures />;
 
       case View.NOT_FOUND:
         return <NotFound onNavigateHome={handleNavigateHome} />;

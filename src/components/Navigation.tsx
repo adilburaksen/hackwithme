@@ -12,6 +12,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) => {
     { label: 'About', value: View.ABOUT },
     { label: 'Writing', value: View.WRITING },
     { label: 'Projects', value: View.PROJECTS },
+    { label: 'Disclosures', value: View.DISCLOSURES },
   ];
 
   return (

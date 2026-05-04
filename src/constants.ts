@@ -1,12 +1,12 @@
-import { Post, Project } from './types';
+import { Post, Project, PublishedCVE, Acknowledgment } from './types';
 
 export const SITE_TITLE = "hackwith.me";
-export const AUTHOR_NAME = "Adil Burak a.k.a. 0racLe";
+export const AUTHOR_NAME = "Adil Burak Şen a.k.a. 0racLe";
 
 export const AUTHOR_PROFILE = {
-  role: "Senior Application Security / Red Team Engineer",
-  location: "Abu Dhabi, United Arab Emirates",
-  bio: "OSCP-certified Application-Security & Red-Team Engineer with 10+ years in finance, telecom, aviation, and insurance. Expert in Penetration Testing, API security, secure SDLC and DevSecOps automation.",
+  role: "Senior Application Security & Red Team Engineer",
+  location: "Istanbul, Turkey · Open to Europe / UK / Remote",
+  bio: "OSCP+-certified Application Security & Red Team Engineer with 8+ years across banking, telecom, aviation, insurance, and e-commerce. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated. Published CVE (CVE-2026-31974). Hands-on across penetration testing, API security, threat modeling, secure SDLC, DevSecOps automation, and AI/LLM security.",
   socials: {
     linkedin: "https://www.linkedin.com/in/adilburaksen/",
     github: "https://github.com/adilburaksen",
@@ -17,47 +17,55 @@ export const AUTHOR_PROFILE = {
     {
       company: "Abu Dhabi Commercial Bank (ADCB)",
       role: "Senior AppSec / Red Team Engineer",
-      period: "2025 - Present",
-      highlight: "Leading appsec & red team initiatives for online banking. Driving secure SDLC and integrating SAST/DAST into CI/CD."
+      period: "2025 - 2026",
+      highlight: "Led STRIDE threat modeling across 14-microservice architecture; produced 52-finding risk register fed into engineering backlogs. Performed CI/CD pipeline assessments and mobile MASVS assessments (140 test cases, 25 findings)."
     },
     {
       company: "Kafein Technology Solutions",
       role: "AppSec Senior Consultant",
       period: "2024 - 2025",
-      highlight: "Bridged vendors (Wallarm, BrightSec) & clients on API-security. Led 10+ PoC deployments cutting go-live time by 30%."
+      highlight: "Security assessments and code reviews across Python/Go/Java/TypeScript stacks. Deployed and tuned SAST/SCA/DAST for 10+ client teams. Trained 100+ developers on OWASP API Top 10."
     },
     {
       company: "Future Technology Systems (Kuwait)",
       role: "Penetration Tester",
       period: "2023 - 2024",
-      highlight: "Found 200+ critical vulns (SQLi, XSS) across banking sectors. Advised 3 banks on zero-trust redesign."
+      highlight: "15+ full-stack pentests for enterprise and financial sector clients; 200+ critical findings; 90% remediation within SLA. Advised three banks on zero-trust network redesign."
     },
     {
       company: "Barikat Cybersecurity",
       role: "Red Team Senior Specialist",
       period: "2022 - 2023",
-      highlight: "Led assessments for Aviation Sector. Remediated risk-ranked vulns with IT/OT teams."
+      highlight: "Web, mobile, API, network, and physical assessments for aviation sector. AD attack chains mapped to MITRE ATT&CK. Re-tested all findings and certified fixes before systems went live."
     },
     {
       company: "Ana Sigorta",
       role: "InfoSec Senior Specialist",
       period: "2021 - 2022",
-      highlight: "Oversaw risk analysis & PCI-DSS audit (100% pass). Negotiated vendor contracts saving $15k."
+      highlight: "Oversaw risk analysis, control rollout, and PCI-DSS audit; 100% pass on first attempt. Negotiated vendor contracts saving $15K."
+    },
+    {
+      company: "Intertech",
+      role: "Application Security Engineer",
+      period: "2020 - 2021",
+      highlight: "Built security gates into 700+ Jenkins pipelines (SAST, SCA, DAST, secrets). Led 8-month Security Champion Academy for 500+ developers; 30% fewer OWASP flaws."
     }
   ],
   arsenal: [
-    "OSCP+ / OSCP (OffSec Certified)",
+    "OSCP+ / OSCP (OffSec)",
+    "eWPTx (INE, 2026)",
+    "eMAPT (INE, 2026)",
     "Certified API Security Pro (CASP)",
     "Certified DevSecOps Pro (CDP)",
     "CEH Master",
-    "ISO27001 Lead Auditor",
-    "CNSS - Certified Network Security Specialist"
+    "ISO27001 Lead Auditor"
   ],
   stack: [
     "Python / Bash / PowerShell / Go",
-    "Burp Suite / Metasploit / Nessus",
-    "Jenkins / GitLab CI / Nexus IQ",
-    "Kubernetes / Docker / Azure / AWS"
+    "Burp Suite Pro / Metasploit / BloodHound",
+    "Fortify / SonarQube / Snyk / Nexus IQ",
+    "Jenkins / GitLab CI / GitHub Actions",
+    "AWS / Azure / GCP / Docker / Kubernetes"
   ],
   interests: "CTF Player (HTB), Shotokan Karate, Analog Photography, Strategy Gaming (EU4, Dota 2)."
 };
@@ -90,3 +98,43 @@ export const RESEARCH_POSTS: Post[] = [
 ];
 
 export const PROJECTS: Project[] = [];
+
+export const PUBLISHED_CVES: PublishedCVE[] = [
+  {
+    id: 'cve-2026-31974',
+    cve: 'CVE-2026-31974',
+    title: 'SSRF in OpenProject',
+    vendor: 'OpenProject',
+    severity: 'Medium',
+    year: '2026',
+    description: 'Server-Side Request Forgery in OpenProject. Coordinated disclosure with the OpenProject security team; fix merged upstream in v17.2.0.',
+    link: 'https://github.com/opf/openproject/security/advisories/GHSA-9wr7-j98g-2jh3',
+    role: 'Reporter'
+  },
+  {
+    id: 'cve-2025-25257',
+    cve: 'CVE-2025-25257',
+    title: 'Pre-auth SQL Injection in Fortinet FortiWeb',
+    vendor: 'Fortinet',
+    severity: 'Critical · CVSS 9.8',
+    year: '2025',
+    description: 'Public exploit tool for pre-authentication SQL injection in Fortinet FortiWeb Fabric Connector. Detects vulnerable instances and demonstrates impact.',
+    link: 'https://github.com/adilburaksen/CVE-2025-25257-Exploit-Tool',
+    role: 'Exploit Author'
+  }
+];
+
+export const ACKNOWLEDGMENTS: Acknowledgment[] = [
+  { company: 'Mastercard', platform: 'Bugcrowd' },
+  { company: 'Dell', platform: 'Bugcrowd' },
+  { company: 'Sophos', platform: 'Bugcrowd' },
+  { company: 'HubSpot', platform: 'Bugcrowd' },
+  { company: 'Telefónica Germany', platform: 'Bugcrowd' },
+  { company: 'Global Fashion Group', platform: 'Bugcrowd' },
+  { company: 'Octopus', platform: 'Bugcrowd' },
+  { company: 'Humble Bundle', platform: 'Bugcrowd' },
+  { company: 'Ecommpay', platform: 'Bugcrowd' },
+  { company: 'Netgear', platform: 'Bugcrowd' },
+  { company: 'Constant Contact', platform: 'Bugcrowd' },
+  { company: 'BlueJeans Network', platform: 'Bugcrowd' }
+];
