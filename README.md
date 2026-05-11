@@ -108,7 +108,7 @@ Configured for GitHub Pages with custom domain. On push to `main`:
 
 ## 📄 License
 
-© 2025 Adil Burak. All rights reserved.
+© 2026 Adil Burak. All rights reserved.
 
 ---
 
