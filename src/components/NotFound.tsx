@@ -7,21 +7,9 @@ interface NotFoundProps {
 const NotFound: React.FC<NotFoundProps> = ({ onNavigateHome }) => {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center animate-in fade-in duration-500">
-      <style>
-        {`
-          @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-          }
-          .cursor {
-            animation: blink 1s step-end infinite;
-            font-weight: 500; /* Make it a bit bolder */
-          }
-        `}
-      </style>
       <h1 className="font-mono text-7xl sm:text-9xl text-text">4<span className="text-accent">0</span>4</h1>
       <p className="font-mono text-lg sm:text-xl text-subtext mt-4">
-        <span className="text-accent">&gt;_</span> page not found<span className="cursor text-accent">_</span>
+        <span className="text-accent">&gt;_</span> page not found<span className="cursor-blink text-accent font-medium">_</span>
       </p>
       <button
         onClick={onNavigateHome}
