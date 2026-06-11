@@ -8,7 +8,7 @@ const Disclosures: React.FC = () => {
       {/* Published CVEs */}
       <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">CVEs</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> CVEs</h2>
         </div>
         <div className="sm:col-span-3 space-y-8">
           {PUBLISHED_CVES.map((entry) => (
@@ -18,14 +18,14 @@ const Disclosures: React.FC = () => {
                   href={entry.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-sm text-text hover:text-hovercolor hover:underline decoration-1 underline-offset-4 decoration-subtext w-fit transition-colors"
+                  className="font-mono text-sm text-text hover:text-accent hover:underline decoration-1 underline-offset-4 decoration-accent w-fit transition-colors"
                 >
-                  {entry.cve} <span className="opacity-60">↗</span>
+                  {entry.cve} <span className="text-accent opacity-70">↗</span>
                 </a>
                 <span className="font-mono text-xs text-subtext tabular-nums">{entry.year}</span>
               </div>
-              <div className="font-serif text-base text-text mb-1">
-                {entry.title} <span className="text-subtext">— {entry.vendor}</span>
+              <div className="font-display text-base text-text mb-1">
+                {entry.title} <span className="text-subtext font-serif">— {entry.vendor}</span>
               </div>
               <div className="font-mono text-xs text-subtext mb-2 flex flex-wrap gap-x-3 gap-y-1">
                 <span>{entry.severity}</span>
@@ -43,7 +43,7 @@ const Disclosures: React.FC = () => {
       {/* Hall of Fame */}
       <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Acknowledgments</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Acknowledgments</h2>
         </div>
         <div className="sm:col-span-3 space-y-8">
           <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl">

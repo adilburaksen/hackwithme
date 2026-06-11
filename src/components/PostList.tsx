@@ -16,7 +16,7 @@ const PostList: React.FC<PostListProps> = ({ posts, limit }) => {
           <li key={post.id} className="group cursor-pointer">
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               {/* Date: Prominent on mobile, aligned left on desktop */}
-              <span className="font-mono text-xs text-subtext shrink-0 w-24 tabular-nums mb-1 sm:mb-0">
+              <span className="font-mono text-xs text-subtext shrink-0 w-24 tabular-nums mb-1 sm:mb-0 group-hover:text-accent transition-colors">
                 {post.date}
               </span>
 
@@ -27,10 +27,10 @@ const PostList: React.FC<PostListProps> = ({ posts, limit }) => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 w-fit"
                 >
-                  <h3 className="text-base sm:text-lg font-serif font-medium text-text group-hover:text-hovercolor transition-colors border-b border-transparent group-hover:border-hovercolor">
+                  <h3 className="text-base sm:text-lg font-display font-medium text-text group-hover:text-hovercolor transition-colors border-b border-transparent group-hover:border-accent">
                     {post.title}
                   </h3>
-                  <span className="text-[10px] text-subtext opacity-50 group-hover:opacity-100 transition-opacity -mt-1 transform group-hover:translate-x-0.5 duration-200">↗</span>
+                  <span className="text-[10px] text-accent opacity-50 group-hover:opacity-100 transition-opacity -mt-1 transform group-hover:translate-x-0.5 duration-200">↗</span>
                 </a>
 
                 {!limit && (

@@ -7,7 +7,7 @@ const About: React.FC = () => {
       
       {/* Header Section */}
       <section>
-        <h1 className="font-serif text-3xl sm:text-4xl text-text mb-2 tracking-tight">
+        <h1 className="font-display text-3xl sm:text-4xl text-text mb-2 tracking-tight">
           {AUTHOR_PROFILE.role}
         </h1>
         <div className="font-mono text-xs text-subtext uppercase tracking-widest flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-1">
@@ -18,7 +18,7 @@ const About: React.FC = () => {
               href={AUTHOR_PROFILE.socials.github} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-text transition-colors"
+              className="hover:text-accent transition-colors"
               aria-label="GitHub"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -29,7 +29,7 @@ const About: React.FC = () => {
               href={AUTHOR_PROFILE.socials.x} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-text transition-colors"
+              className="hover:text-accent transition-colors"
               aria-label="X (Twitter)"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -40,7 +40,7 @@ const About: React.FC = () => {
               href={AUTHOR_PROFILE.socials.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-text transition-colors"
+              className="hover:text-accent transition-colors"
               aria-label="LinkedIn"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -54,7 +54,7 @@ const About: React.FC = () => {
       {/* Signal / Bio */}
       <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Signal</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Signal</h2>
         </div>
         <div className="sm:col-span-3">
           <p className="font-serif text-lg text-text opacity-90 leading-relaxed max-w-xl">
@@ -66,7 +66,7 @@ const About: React.FC = () => {
       {/* Trajectory / Experience */}
       <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Trajectory</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Trajectory</h2>
         </div>
         <div className="sm:col-span-3 space-y-8">
           {AUTHOR_PROFILE.experience.map((job, idx) => (
@@ -89,7 +89,7 @@ const About: React.FC = () => {
       {/* Arsenal / Skills & Certs */}
       <section className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Arsenal</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Arsenal</h2>
         </div>
         <div className="sm:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div>
@@ -114,7 +114,7 @@ const About: React.FC = () => {
        {/* Offline / Hobbies */}
        <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
         <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4">Offline</h2>
+          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Offline</h2>
         </div>
         <div className="sm:col-span-3">
           <p className="font-serif text-base text-subtext leading-relaxed">

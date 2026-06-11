@@ -23,12 +23,12 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) => {
             <button
               onClick={() => setView(item.value)}
               className={`text-left transition-all duration-200 ${
-                currentView === item.value 
-                  ? 'text-text border-b border-text' 
+                currentView === item.value
+                  ? 'text-text border-b border-accent'
                   : 'text-subtext hover:text-text hover:border-b hover:border-subtext'
               }`}
             >
-              {item.label.toLowerCase()}
+              {currentView === item.value && <span className="text-accent mr-1">/</span>}{item.label.toLowerCase()}
             </button>
           </li>
         ))}

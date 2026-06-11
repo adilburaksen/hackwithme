@@ -72,20 +72,42 @@ const App: React.FC = () => {
         return (
           <div className="space-y-12 sm:space-y-16 animate-in fade-in duration-500">
             <section>
-              <h1 className="font-serif text-3xl sm:text-4xl text-text mb-4 sm:mb-6 tracking-tight">
-                {AUTHOR_NAME}
-              </h1>
-              <p className="font-serif text-lg text-subtext leading-relaxed max-w-2xl">
-                {AUTHOR_PROFILE.bio}
-              </p>
+              {/* Terminal-style identity panel */}
+              <div className="rounded-md border border-bordercolor bg-surface/40 overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-2 border-b border-bordercolor">
+                  <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-subtext/40" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-subtext/40" />
+                  <span className="font-mono text-[11px] text-subtext ml-2 truncate">{SITE_TITLE} — session</span>
+                </div>
+                <div className="p-5 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed">
+                  <div className="text-subtext">
+                    <span className="text-accent">$</span> whoami
+                  </div>
+                  <h1 className="font-display text-2xl sm:text-3xl text-text my-2 tracking-tight">
+                    {AUTHOR_NAME}
+                  </h1>
+                  <div className="text-subtext mt-4">
+                    <span className="text-accent">$</span> cat ./signal.txt
+                  </div>
+                  <p className="font-serif text-base sm:text-lg text-text/90 leading-relaxed max-w-2xl mt-2">
+                    {AUTHOR_PROFILE.bio}
+                  </p>
+                  <div className="text-subtext mt-4">
+                    <span className="text-accent">$</span> <span className="cursor-blink text-accent">_</span>
+                  </div>
+                </div>
+              </div>
             </section>
 
             <section>
               <div className="flex items-center justify-between mb-6 sm:mb-8 border-b border-bordercolor pb-2">
-                <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest">Recent Logs</h2>
+                <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest">
+                  <span className="text-accent">#</span> Recent Logs
+                </h2>
                 <button
                   onClick={() => setCurrentView(View.WRITING)}
-                  className="font-mono text-xs text-subtext hover:text-text transition-colors"
+                  className="font-mono text-xs text-subtext hover:text-accent transition-colors"
                 >
                   view all &rarr;
                 </button>
@@ -103,7 +125,7 @@ const App: React.FC = () => {
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-12">
              <div>
                 <div className="mb-8 sm:mb-10 border-b border-bordercolor pb-2">
-                  <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest">Archive</h2>
+                  <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest"><span className="text-accent">#</span> Archive</h2>
                 </div>
                 <PostList posts={RESEARCH_POSTS} />
              </div>
@@ -114,7 +136,7 @@ const App: React.FC = () => {
         return (
            <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
              <div className="mb-8 sm:mb-10 border-b border-bordercolor pb-2">
-                <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest">Experiments</h2>
+                <h2 className="font-mono text-xs sm:text-sm text-subtext uppercase tracking-widest"><span className="text-accent">#</span> Experiments</h2>
               </div>
             {PROJECTS.length > 0 ? (
               <ProjectList projects={PROJECTS} />
@@ -145,10 +167,10 @@ const App: React.FC = () => {
 
       <header className="mb-8 sm:mb-12">
         <div
-          className="font-mono text-xs text-subtext hover:text-text cursor-pointer mb-4 inline-block"
+          className="font-mono text-xs text-subtext hover:text-text cursor-pointer mb-4 inline-block group"
           onClick={() => setCurrentView(View.HOME)}
         >
-          <span className="text-text">&gt;_</span> {SITE_TITLE}
+          <span className="text-accent group-hover:text-glow transition-all">&gt;_</span> {SITE_TITLE}
         </div>
         <Navigation currentView={currentView} setView={setCurrentView} />
       </header>
@@ -166,7 +188,7 @@ const App: React.FC = () => {
             href={AUTHOR_PROFILE.socials.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-subtext hover:text-text transition-colors"
+            className="text-subtext hover:text-accent transition-colors"
             aria-label="GitHub"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -177,7 +199,7 @@ const App: React.FC = () => {
             href={AUTHOR_PROFILE.socials.x}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-subtext hover:text-text transition-colors"
+            className="text-subtext hover:text-accent transition-colors"
             aria-label="X (Twitter)"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -188,7 +210,7 @@ const App: React.FC = () => {
             href={AUTHOR_PROFILE.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-subtext hover:text-text transition-colors"
+            className="text-subtext hover:text-accent transition-colors"
             aria-label="LinkedIn"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">

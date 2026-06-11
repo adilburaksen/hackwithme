@@ -124,6 +124,9 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
 
 export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   // Bugcrowd
+  { company: 'Mercedes-Benz', platform: 'Bugcrowd' },
+  { company: 'Fireblocks (MPC)', platform: 'Bugcrowd' },
+  { company: 'ConnectiveRx', platform: 'Bugcrowd' },
   { company: 'Mastercard', platform: 'Bugcrowd' },
   { company: 'Dell', platform: 'Bugcrowd' },
   { company: 'Sophos', platform: 'Bugcrowd' },
@@ -145,8 +148,10 @@ export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   { company: 'OpenProject', platform: 'YesWeHack' },
   { company: 'StashAway', platform: 'YesWeHack' },
   { company: 'Superbank', platform: 'YesWeHack' },
-  { company: 'Netcloud', platform: 'YesWeHack' },
+  { company: 'Nextcloud', platform: 'YesWeHack' },
   { company: 'Ohtuleht', platform: 'YesWeHack' },
   // Immunefi
-  { company: 'Kiln (dApp / Infra)', platform: 'Immunefi' }
+  { company: 'Kiln (dApp / Infra)', platform: 'Immunefi' },
+  // Google VRP
+  { company: 'Google', platform: 'Google VRP' }
 ];
