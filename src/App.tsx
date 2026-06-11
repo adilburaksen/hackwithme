@@ -5,6 +5,7 @@ import ProjectList from './components/ProjectList';
 import About from './components/About';
 import Disclosures from './components/Disclosures';
 import ThemeToggle from './components/ThemeToggle';
+import ConsentBanner from './components/ConsentBanner';
 import NotFound from './components/NotFound';
 import { View } from './types';
 import { RESEARCH_POSTS, PROJECTS, SITE_TITLE, AUTHOR_NAME, AUTHOR_PROFILE } from './constants';
@@ -164,6 +165,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen max-w-3xl mx-auto px-5 py-8 sm:px-6 sm:py-24 flex flex-col transition-colors duration-300">
       <ThemeToggle />
+      <ConsentBanner />
 
       <header className="mb-8 sm:mb-12">
         <div
