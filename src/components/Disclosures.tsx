@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { PUBLISHED_CVES, ACKNOWLEDGMENTS } from '../constants';
 
 const Disclosures: React.FC = () => {
+  const acknowledgmentsByPlatform = useMemo(
+    () =>
+      Array.from(
+        ACKNOWLEDGMENTS.reduce((map, entry) => {
+          const list = map.get(entry.platform) ?? [];
+          list.push(entry.company);
+          map.set(entry.platform, list);
+          return map;
+        }, new Map<string, string[]>())
+      ),
+    []
+  );
+
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-12 sm:space-y-16">
 
@@ -49,14 +62,7 @@ const Disclosures: React.FC = () => {
           <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl">
             Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, Intigriti, and Synack Red Team.
           </p>
-          {Array.from(
-            ACKNOWLEDGMENTS.reduce((map, entry) => {
-              const list = map.get(entry.platform) ?? [];
-              list.push(entry.company);
-              map.set(entry.platform, list);
-              return map;
-            }, new Map<string, string[]>())
-          ).map(([platform, companies]) => (
+          {acknowledgmentsByPlatform.map(([platform, companies]) => (
             <div key={platform}>
               <h3 className="font-mono text-xs text-subtext opacity-70 mb-3 border-b border-bordercolor pb-1">{platform}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">

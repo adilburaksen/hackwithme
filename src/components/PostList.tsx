@@ -13,7 +13,7 @@ const PostList: React.FC<PostListProps> = ({ posts, limit }) => {
     <div className="w-full">
       <ul className="flex flex-col gap-8 sm:gap-6">
         {displayPosts.map((post) => (
-          <li key={post.id} className="group cursor-pointer">
+          <li key={post.id} className="group">
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-6">
               {/* Date: Prominent on mobile, aligned left on desktop */}
               <span className="font-mono text-xs text-subtext shrink-0 w-24 tabular-nums mb-1 sm:mb-0 group-hover:text-accent transition-colors">

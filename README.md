@@ -1,44 +1,47 @@
 # hackwith.me
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://hackwith.me)
+[![Live](https://img.shields.io/badge/live-hackwith.me-brightgreen)](https://hackwith.me)
 [![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)](LICENSE)
 
-> A minimalist, terminal-inspired personal website for **Adil Burak a.k.a. 0racLe**  
-> Senior Application Security & Red Team Engineer
+> A minimalist, terminal-inspired personal site for **Adil Burak a.k.a. 0racLe**
+> Application Security & Red Team Engineer
 
 ![Preview](https://hackwith.me/og-image.png)
 
-## 🔗 Live Demo
+## Live
 
 **[https://hackwith.me](https://hackwith.me)**
 
-## ✨ Features
+## Features
 
-- **Terminal Aesthetic** — Dark/light theme with monospace typography
-- **Blog System** — Posts with reading time, scroll progress, toast/upvote, and share buttons
-- **Keyboard Navigation** — `j`/`k` for next/prev post, `Esc` to go back
-- **Syntax Highlighting** — Code blocks with Atom One Dark theme (highlight.js)
-- **SEO Optimized** — Open Graph meta tags, sitemap, robots.txt
-- **Responsive Design** — Mobile-first approach
-- **Google Analytics** — Integrated tracking
-- **Clean URLs** — Hash-based routing with custom 404 page
+- **Terminal aesthetic** — warm-ink palette with an orange signal accent; dark/light theme toggle (persisted, no flash on load)
+- **Single-page app** — Index, About, Writing, Projects, and Disclosures views
+- **Writing** — posts are authored on Medium; the archive links out to each piece
+- **Disclosures** — published CVEs and bug-bounty acknowledgments (Bugcrowd, YesWeHack, Immunefi, Google VRP)
+- **Custom 404** — terminal-style not-found view
+- **SEO/social** — Open Graph + Twitter card meta, sitemap, robots.txt
+- **Security headers** — CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy via Netlify `_headers`
+- **`security.txt`** — RFC 9116 contact info at `/.well-known/security.txt`
+- **Analytics** — Google Analytics (gtag)
 
-## 🛠 Tech Stack
+## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Framework | React 18 + TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS (CDN) |
-| Fonts | JetBrains Mono, Newsreader |
-| Syntax Highlighting | highlight.js |
-| Hosting | GitHub Pages |
+| Category    | Technology                     |
+|-------------|--------------------------------|
+| Framework   | React 18 + TypeScript          |
+| Build Tool  | Vite                           |
+| Styling     | Tailwind CSS (CDN)             |
+| Fonts       | Fraunces, JetBrains Mono, Newsreader |
+| Hosting     | Netlify                        |
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hackwith.me/
 ├── public/
+│   ├── .well-known/security.txt
+│   ├── _headers            # Netlify security + caching headers
+│   ├── _redirects          # SPA routing + real 404
 │   ├── favicon.svg
 │   ├── og-image.png
 │   ├── robots.txt
@@ -46,15 +49,14 @@ hackwith.me/
 ├── src/
 │   ├── components/
 │   │   ├── About.tsx
-│   │   ├── BlogPost.tsx
+│   │   ├── Disclosures.tsx
 │   │   ├── Navigation.tsx
 │   │   ├── NotFound.tsx
 │   │   ├── PostList.tsx
 │   │   ├── ProjectList.tsx
-│   │   ├── ThemeToggle.tsx
-│   │   └── ToastButton.tsx
+│   │   └── ThemeToggle.tsx
 │   ├── App.tsx
-│   ├── constants.ts        # Posts, projects, author profile
+│   ├── constants.ts        # Posts, projects, CVEs, acknowledgments, author profile
 │   ├── types.ts
 │   └── main.tsx
 ├── index.html
@@ -63,7 +65,7 @@ hackwith.me/
 └── vite.config.ts
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -83,30 +85,29 @@ npm run build
 npm run preview
 ```
 
-## 📝 Adding New Posts
+## Adding a Post
 
-Edit `src/constants.ts` and add to the `RESEARCH_POSTS` array:
+Posts live on Medium. Add an entry to the `RESEARCH_POSTS` array in `src/constants.ts`:
 
 ```typescript
 {
   id: 'your-post-slug',
   title: 'Your Post Title',
-  date: '2025-01-01',
+  date: '2026-01-01',
   tags: ['Tag1', 'Tag2'],
   summary: 'Brief description of your post.',
-  content: `Your post content here...`
+  externalLink: 'https://medium.com/@adilburaksen/your-post'
 }
 ```
 
-## 🌐 Deployment
+## Deployment
 
-Configured for GitHub Pages with custom domain. On push to `main`:
+Hosted on **Netlify** with the custom domain `hackwith.me`. On push to `main`,
+Netlify builds (`npm run build`) and deploys `dist/`. SPA routing and a real 404
+status are configured in `public/_redirects`; security and caching headers in
+`public/_headers`.
 
-1. Build: `npm run build`
-2. Deploy `dist/` folder to GitHub Pages
-3. Custom domain: `hackwith.me`
-
-## 📄 License
+## License
 
 © 2026 Adil Burak. All Rights Reserved.
 

@@ -1,1 +1,7 @@
-/*    /index.html   200
+# Known client routes resolve to the SPA shell with a 200
+/about        /index.html   200
+/writing      /index.html   200
+/projects     /index.html   200
+/disclosures  /index.html   200
+# Everything else renders the SPA but returns a real 404 (no soft-404)
+/*            /index.html   404

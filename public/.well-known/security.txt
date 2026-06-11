@@ -1,0 +1,5 @@
+Contact: mailto:adilburaksen@gmail.com
+Contact: https://www.linkedin.com/in/adilburaksen/
+Expires: 2027-06-11T00:00:00.000Z
+Preferred-Languages: en, tr
+Canonical: https://hackwith.me/.well-known/security.txt
