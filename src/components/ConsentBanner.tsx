@@ -32,13 +32,14 @@ const ConsentBanner: React.FC = () => {
 
   if (!visible) return null;
 
+  // safe-area bottom lives in a class (not an inline style) so the CSP can drop
+  // style-src 'unsafe-inline'.
   return (
     <div
       role="dialog"
       aria-modal="false"
       aria-label="Analytics consent"
-      className="anim-rise fixed inset-x-3 z-50 rounded-panel border border-strong bg-surface p-[18px] font-mono text-xs leading-[1.65] text-muted sm:inset-x-auto sm:right-6 sm:max-w-[340px]"
-      style={{ bottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+      className="anim-rise fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-50 rounded-panel border border-strong bg-surface p-[18px] font-mono text-xs leading-[1.65] text-muted sm:inset-x-auto sm:right-6 sm:max-w-[340px]"
     >
       <div>
         <span className="text-signal">$</span> consent --analytics
