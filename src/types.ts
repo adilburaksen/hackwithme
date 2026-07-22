@@ -22,7 +22,7 @@ export enum View {
   WRITING = 'WRITING',
   PROJECTS = 'PROJECTS',
   DISCLOSURES = 'DISCLOSURES',
-  NOT_FOUND = 'NOT_FOUND'
+  NOT_FOUND = 'NOT_FOUND',
 }
 
 export interface PublishedCVE {
@@ -40,4 +40,19 @@ export interface PublishedCVE {
 export interface Acknowledgment {
   company: string;
   platform: string;
+}
+
+export interface ExperienceEntry {
+  company: string;
+  role: string;
+  period: string;
+  highlight: string;
+}
+
+/** A single row of the Home Evidence ledger. */
+export interface EvidenceMetric {
+  label: string;
+  value: string;
+  valueDetail?: string;
+  detail: string;
 }
