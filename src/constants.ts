@@ -196,6 +196,8 @@ export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   { company: 'Netgear', platform: 'Bugcrowd' },
   { company: 'Constant Contact', platform: 'Bugcrowd' },
   { company: 'BlueJeans Network', platform: 'Bugcrowd' },
+  { company: 'Indeed', platform: 'Bugcrowd' },
+  { company: 'Block Open Source', platform: 'Bugcrowd' },
   // YesWeHack
   { company: 'Swiss Post', platform: 'YesWeHack' },
   { company: 'OVHCloud', platform: 'YesWeHack' },
