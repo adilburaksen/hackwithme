@@ -1,82 +1,90 @@
 import React, { useMemo } from 'react';
-import { PUBLISHED_CVES, ACKNOWLEDGMENTS } from '../constants';
+import { PUBLISHED_CVES, ACKNOWLEDGMENTS, ACKNOWLEDGMENTS_INTRO } from '../constants';
+import PageIntro from './PageIntro';
+import LabeledSection from './LabeledSection';
+import DisclosureRecord from './DisclosureRecord';
+
+const subLabel =
+  'mb-3 border-b border-subtle pb-1.5 font-mono text-[10.5px] uppercase tracking-[0.12em] text-muted sm:text-[11px]';
+const gridClass = 'grid grid-cols-2 gap-x-6 gap-y-2.5 font-mono text-[13px] sm:grid-cols-3';
+
+interface PlatformGroup {
+  platform: string;
+  companies: string[];
+}
 
 const Disclosures: React.FC = () => {
-  const acknowledgmentsByPlatform = useMemo(
-    () =>
-      Array.from(
-        ACKNOWLEDGMENTS.reduce((map, entry) => {
-          const list = map.get(entry.platform) ?? [];
-          list.push(entry.company);
-          map.set(entry.platform, list);
-          return map;
-        }, new Map<string, string[]>())
-      ),
-    []
-  );
+  const groups = useMemo<PlatformGroup[]>(() => {
+    const map = new Map<string, string[]>();
+    for (const entry of ACKNOWLEDGMENTS) {
+      const list = map.get(entry.platform) ?? [];
+      list.push(entry.company);
+      map.set(entry.platform, list);
+    }
+    return Array.from(map, ([platform, companies]) => ({ platform, companies }));
+  }, []);
+
+  const bigGroups = groups.filter((g) => g.companies.length > 2);
+  const smallGroups = groups.filter((g) => g.companies.length <= 2);
+
+  const cveCount = String(PUBLISHED_CVES.length).padStart(2, '0');
+  const meta = `${cveCount} published CVE${PUBLISHED_CVES.length === 1 ? '' : 's'} · ${ACKNOWLEDGMENTS.length} public acknowledgments`;
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-12 sm:space-y-16">
+    <div className="anim-fade">
+      <PageIntro command="cat /disclosures/index" title="Disclosures" meta={meta} />
 
-      {/* Published CVEs */}
-      <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
-        <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> CVEs</h2>
-        </div>
-        <div className="sm:col-span-3 space-y-8">
-          {PUBLISHED_CVES.map((entry) => (
-            <div key={entry.id} className="group">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1 gap-1">
-                <a
-                  href={entry.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm text-text hover:text-accent hover:underline decoration-1 underline-offset-4 decoration-accent w-fit transition-colors"
-                >
-                  {entry.cve} <span className="text-accent opacity-70">↗</span>
-                </a>
-                <span className="font-mono text-xs text-subtext tabular-nums">{entry.year}</span>
-              </div>
-              <div className="font-display text-base text-text mb-1">
-                {entry.title} <span className="text-subtext font-serif">— {entry.vendor}</span>
-              </div>
-              <div className="font-mono text-xs text-subtext mb-2 flex flex-wrap gap-x-3 gap-y-1">
-                <span>{entry.severity}</span>
-                <span className="opacity-50">|</span>
-                <span>{entry.role}</span>
-              </div>
-              <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl">
-                {entry.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className="space-y-9 sm:space-y-16">
+        <LabeledSection title="CVEs">
+          <div className="space-y-8">
+            {PUBLISHED_CVES.map((cve) => (
+              <DisclosureRecord key={cve.id} cve={cve} variant="page" />
+            ))}
+          </div>
+        </LabeledSection>
 
-      {/* Hall of Fame */}
-      <section className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
-        <div className="sm:col-span-1">
-          <h2 className="font-mono text-xs text-subtext uppercase tracking-widest sticky top-4"><span className="text-accent">#</span> Acknowledgments</h2>
-        </div>
-        <div className="sm:col-span-3 space-y-8">
-          <p className="font-serif text-sm text-subtext leading-relaxed max-w-xl">
-            Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, Intigriti, and Synack Red Team.
-          </p>
-          {acknowledgmentsByPlatform.map(([platform, companies]) => (
-            <div key={platform}>
-              <h3 className="font-mono text-xs text-subtext opacity-70 mb-3 border-b border-bordercolor pb-1">{platform}</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2">
-                {companies.map((company) => (
-                  <div key={company} className="font-mono text-sm text-text">
-                    {company}
+        <LabeledSection title="Acknowledgments">
+          <div className="max-w-[46rem]">
+            <p className="mb-6 max-w-reading text-[14.5px] leading-[1.62] text-muted sm:text-[15px] sm:leading-[1.65]">
+              {ACKNOWLEDGMENTS_INTRO}
+            </p>
+
+            {bigGroups.map((group) => (
+              <div key={group.platform} className="mb-8">
+                <div className={subLabel}>
+                  {group.platform} · {String(group.companies.length).padStart(2, '0')}
+                </div>
+                <div className={gridClass}>
+                  {group.companies.map((company) => (
+                    <span key={company} className="[overflow-wrap:anywhere]">
+                      {company}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {smallGroups.length > 0 && (
+              <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
+                {smallGroups.map((group) => (
+                  <div key={group.platform}>
+                    <div className={subLabel}>
+                      {group.platform} · {String(group.companies.length).padStart(2, '0')}
+                    </div>
+                    <div className="font-mono text-[13px]">
+                      {group.companies.map((company) => (
+                        <div key={company} className="[overflow-wrap:anywhere]">
+                          {company}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+            )}
+          </div>
+        </LabeledSection>
+      </div>
     </div>
   );
 };

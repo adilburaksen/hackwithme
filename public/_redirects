@@ -1,7 +1,6 @@
-# Known client routes resolve to the SPA shell with a 200
-/about        /index.html   200
-/writing      /index.html   200
-/projects     /index.html   200
-/disclosures  /index.html   200
-# Everything else renders the SPA but returns a real 404 (no soft-404)
-/*            /index.html   404
+# Every route is prerendered to its own static document at build time
+# (scripts/prerender.mjs): /about/index.html, /writing/index.html, etc.
+# Netlify serves those for /about and /about/ automatically, so no rewrites are
+# needed. Any unmatched path falls through to a real 404 with the prerendered
+# 404 page (static files are matched before this rule).
+/*    /404.html    404

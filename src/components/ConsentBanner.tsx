@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getStoredConsent, storeConsent, loadAnalytics } from '../analytics';
 
+/**
+ * Analytics consent dialog. Bottom-right on desktop, full-width bottom on
+ * mobile (safe-area aware). Focus moves to `allow` on open. Analytics never
+ * loads until the visitor grants consent (gating preserved from analytics.ts).
+ */
 const ConsentBanner: React.FC = () => {
   const [visible, setVisible] = useState(false);
+  const allowRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const choice = getStoredConsent();
@@ -11,8 +17,12 @@ const ConsentBanner: React.FC = () => {
     } else if (choice === null) {
       setVisible(true);
     }
-    // 'denied' -> stay hidden, load nothing
+    // 'denied' → stay hidden, load nothing
   }, []);
+
+  useEffect(() => {
+    if (visible) allowRef.current?.focus();
+  }, [visible]);
 
   const decide = (granted: boolean) => {
     storeConsent(granted ? 'granted' : 'denied');
@@ -25,25 +35,31 @@ const ConsentBanner: React.FC = () => {
   return (
     <div
       role="dialog"
+      aria-modal="false"
       aria-label="Analytics consent"
-      className="fixed inset-x-3 bottom-3 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-50 rounded-md border border-bordercolor bg-surface/95 backdrop-blur p-4 font-mono text-xs text-subtext shadow-xl animate-in fade-in slide-in-from-bottom-2 duration-300"
+      className="anim-rise fixed inset-x-3 z-50 rounded-panel border border-strong bg-surface p-[18px] font-mono text-xs leading-[1.65] text-muted sm:inset-x-auto sm:right-6 sm:max-w-[340px]"
+      style={{ bottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
     >
-      <p className="leading-relaxed">
-        <span className="text-accent">$</span> consent --analytics
-        <br />
-        This site can load privacy-friendly Google Analytics (IP anonymized) to
-        count visits. Nothing is loaded until you choose.
+      <div>
+        <span className="text-signal">$</span> consent --analytics
+      </div>
+      <p className="mt-2">
+        This site can load privacy-friendly Google Analytics (IP anonymized) to count visits.
+        Nothing is loaded until you choose.
       </p>
-      <div className="mt-3 flex gap-3">
+      <div className="mt-3.5 flex gap-2.5">
         <button
+          ref={allowRef}
+          type="button"
           onClick={() => decide(true)}
-          className="border border-accent text-accent px-3 py-1 rounded-sm hover:bg-accent hover:text-background transition-colors"
+          className="h-11 rounded-control border border-signal px-[18px] text-signal transition-colors hover:bg-signal hover:text-canvas"
         >
           allow
         </button>
         <button
+          type="button"
           onClick={() => decide(false)}
-          className="border border-bordercolor text-subtext px-3 py-1 rounded-sm hover:text-text hover:border-subtext transition-colors"
+          className="h-11 rounded-control border border-subtle px-[18px] text-muted transition-colors hover:border-strong hover:text-primary"
         >
           deny
         </button>
