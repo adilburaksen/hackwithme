@@ -37,7 +37,7 @@ const DEFS: Record<string, { title: string; description: string; index?: boolean
   '/disclosures/': {
     title: `Disclosures — ${NAME_SUFFIX}`,
     description:
-      'Published CVE and 27 public bug-bounty acknowledgments across Bugcrowd, YesWeHack, Immunefi, and Google VRP by Adil Burak (0racLe).',
+      'Published CVE and 29 public bug-bounty acknowledgments across Bugcrowd, YesWeHack, Immunefi, and Google VRP by Adil Burak (0racLe).',
   },
 };
 
