@@ -74,13 +74,16 @@ const ThemeToggle: React.FC = () => {
 
   const nextLabel = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
 
+  // Visual box is 36px on desktop / 44px on mobile; the ::after extends the
+  // pointer/touch target to 44×44 on desktop too (WCAG 2.5.5) without moving the
+  // border or the focus ring.
   return (
     <button
       type="button"
       onClick={toggle}
       aria-label={nextLabel}
       title={nextLabel}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-control border border-subtle text-muted transition-colors hover:border-strong hover:bg-surface hover:text-signal sm:h-9 sm:w-9"
+      className="relative inline-flex h-11 w-11 items-center justify-center rounded-control border border-subtle text-muted transition-colors after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] hover:border-strong hover:bg-surface hover:text-signal sm:h-9 sm:w-9"
     >
       {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </button>
