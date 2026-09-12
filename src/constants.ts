@@ -117,6 +117,16 @@ export const EVIDENCE_METRICS: EvidenceMetric[] = [
 
 export const RESEARCH_POSTS: Post[] = [
   {
+    id: 'we-keep-updating-ai-but-not-the-abstractions-beneath-it',
+    title: 'We Keep Updating AI, But Not the Abstractions Beneath It',
+    date: '2026-09-12',
+    tags: ['AI', 'Architecture', 'Computing'],
+    summary:
+      'We build increasingly autonomous intelligence on computing abstractions from an era without autonomous software actors — a look at what a machine designed from first principles might be.',
+    externalLink:
+      'https://medium.com/@adilburaksen/we-keep-updating-ai-but-not-the-abstractions-beneath-it-98663047d6a4',
+  },
+  {
     id: 'apis-from-subroutine-libraries-to-zero-trust',
     title: 'APIs: From Subroutine Libraries to Zero Trust — A Technical History',
     date: '2026-02-25',
