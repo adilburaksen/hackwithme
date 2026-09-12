@@ -80,7 +80,7 @@ const Home: React.FC = () => {
             <span>
               <span className="text-signal">#</span> Evidence
             </span>
-            <span>ledger · 04</span>
+            <span>ledger · {String(EVIDENCE_METRICS.length).padStart(2, '0')}</span>
           </div>
           {EVIDENCE_METRICS.map((metric, idx) => (
             <div
