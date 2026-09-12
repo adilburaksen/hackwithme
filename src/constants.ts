@@ -1,4 +1,5 @@
 import { Post, Project, PublishedCVE, Acknowledgment, ExperienceEntry, EvidenceMetric } from './types';
+import writingData from './data/writing.json';
 
 export const SITE_TITLE = 'hackwith.me';
 export const AUTHOR_FULL_NAME = 'Adil Burak Şen';
@@ -115,46 +116,7 @@ export const EVIDENCE_METRICS: EvidenceMetric[] = [
   },
 ];
 
-export const RESEARCH_POSTS: Post[] = [
-  {
-    id: 'we-keep-updating-ai-but-not-the-abstractions-beneath-it',
-    title: 'We Keep Updating AI, But Not the Abstractions Beneath It',
-    date: '2026-09-12',
-    tags: ['AI', 'Architecture', 'Computing'],
-    summary:
-      'We build increasingly autonomous intelligence on computing abstractions from an era without autonomous software actors — a look at what a machine designed from first principles might be.',
-    externalLink:
-      'https://medium.com/@adilburaksen/we-keep-updating-ai-but-not-the-abstractions-beneath-it-98663047d6a4',
-  },
-  {
-    id: 'apis-from-subroutine-libraries-to-zero-trust',
-    title: 'APIs: From Subroutine Libraries to Zero Trust — A Technical History',
-    date: '2026-02-25',
-    tags: ['API', 'Architecture', 'Security'],
-    summary:
-      'A deep dive into the evolution of APIs, from 1940s calling conventions to modern distributed security architectures.',
-    externalLink:
-      'https://medium.com/@adilburaksen/apis-from-subroutine-libraries-to-zero-trust-a-technical-history-f614912b76c7',
-  },
-  {
-    id: 'the-age-of-insecurity',
-    title: 'The Age of Insecurity: Human Nature in a Tech-Driven World',
-    date: '2025-04-10',
-    tags: ['Society', 'Tech', 'AI'],
-    summary:
-      'Reflections on social insecurity, the false conflict between humans and machines, and navigating the golden age of digital literacy.',
-    externalLink:
-      'https://medium.com/@adilburaksen/the-age-of-insecurity-human-nature-in-a-tech-driven-world-d1d52a7bc0fe',
-  },
-  {
-    id: 'how-long-has-it-been',
-    title: 'How long has it been?',
-    date: '2025-04-06',
-    tags: ['Personal', 'Growth', 'Reflection'],
-    summary: 'Reflections on the passage of time, the skill of laziness, and breaking the armor of inertia.',
-    externalLink: 'https://medium.com/@adilburaksen/how-long-has-it-been-1f4823ba2530',
-  },
-];
+export const RESEARCH_POSTS: Post[] = writingData as Post[];
 
 export const PROJECTS: Project[] = [
   {

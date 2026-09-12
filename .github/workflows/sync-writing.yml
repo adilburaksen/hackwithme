@@ -1,0 +1,59 @@
+name: Sync Writing from Medium
+
+# Pulls new Medium posts into src/data/writing.json and opens a PR for review.
+# Never auto-merges: derived summary/tags should be checked by a human first.
+
+on:
+  schedule:
+    - cron: '17 6 * * *' # daily, 06:17 UTC
+  workflow_dispatch: {}
+
+concurrency:
+  group: sync-writing
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: bot/sync-writing
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sync writing.json from the Medium feed
+        run: node scripts/sync-writing.mjs
+
+      - name: Open a PR if the archive changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/data/writing.json; then
+            echo "No changes; nothing to do."
+            exit 0
+          fi
+
+          git config user.name  "hackwith-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git checkout -B "$BRANCH"
+          git add src/data/writing.json
+          git commit -m "content: sync Writing archive from Medium"
+          git push --force-with-lease origin "$BRANCH"
+
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create \
+              --base main \
+              --head "$BRANCH" \
+              --title "content: sync Writing archive from Medium" \
+              --body $'New Medium post(s) detected and added to `src/data/writing.json`.\n\n**Review before merging** — the summary and tags are auto-derived from the feed and usually want a human touch (e.g. `AGI` vs `Agi`).'
+          else
+            echo "PR already open for $BRANCH; updated its branch."
+          fi
