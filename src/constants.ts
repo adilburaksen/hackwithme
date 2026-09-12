@@ -149,7 +149,7 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
 ];
 
 export const ACKNOWLEDGMENTS_INTRO =
-  'Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, Intigriti, and Synack Red Team.';
+  'Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, and Google VRP.';
 
 export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   // Bugcrowd
