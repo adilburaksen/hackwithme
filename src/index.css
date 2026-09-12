@@ -84,3 +84,10 @@ body {
 ::-webkit-scrollbar-track { background: var(--canvas); }
 ::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--signal); }
+
+/* Reserve bottom space while the consent bar is open so the fixed, full-width
+   bar (see ConsentBanner) never hides page content. Cleared on choice. */
+body.consent-open { padding-bottom: 11rem; }
+@media (min-width: 640px) {
+  body.consent-open { padding-bottom: 5.5rem; }
+}
