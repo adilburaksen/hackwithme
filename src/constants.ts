@@ -14,13 +14,13 @@ export interface Certification {
 }
 
 export const AUTHOR_PROFILE = {
-  role: 'Senior Application Security & Red Team Engineer',
+  role: 'Senior Application Security Engineer',
   location: 'Istanbul, Turkey · Open to Europe / UK / Remote',
   availability: {
     statement: 'Open to Europe / UK / Remote',
     location: 'Istanbul, Turkey',
   },
-  bio: 'OSCP+ certified Application Security & Red Team Engineer with 8+ years across banking, telecom, aviation, insurance, and e-commerce. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated. Published CVE (CVE-2026-31974). Hands-on across penetration testing, API security, threat modeling, secure SDLC, DevSecOps automation, and AI/LLM security.',
+  bio: 'Application security engineer with 10+ years in offensive and application security across banking, telecom, aviation, insurance and e-commerce. Web, API and mobile security testing, threat modeling and CI/CD security. Bugcrowd Top 100 (2018), 150+ validated vulnerabilities, credited for CVE-2026-31974 (OpenProject). OSCP+, eWPTx, eMAPT, CASP.',
   socials: {
     linkedin: 'https://www.linkedin.com/in/adilburaksen/',
     github: 'https://github.com/adilburaksen',
@@ -29,63 +29,77 @@ export const AUTHOR_PROFILE = {
   },
   experience: [
     {
+      company: 'Self-employed',
+      role: 'Independent Security Researcher (Bug Bounty)',
+      period: '2018 – Present',
+      highlight:
+        'Bugcrowd Top 100 (2018). 400+ reports and 150+ validated vulnerabilities on Bugcrowd, Synack Red Team, YesWeHack, Intigriti and Immunefi. Credited for CVE-2026-31974 (OpenProject). Broken Function Level Authorization at Indeed reclassified from Informational to P1 after re-triage ($10,000 bounty).',
+    },
+    {
       company: 'Abu Dhabi Commercial Bank (ADCB)',
-      role: 'Senior AppSec / Red Team Engineer',
+      role: 'Senior Application Security / Red Team Engineer (Contract)',
       period: '2025 – 2026',
       highlight:
-        'Led STRIDE threat modeling across 14-microservice architecture; produced 52-finding risk register fed into engineering backlogs. Performed CI/CD pipeline assessments and mobile MASVS assessments (140 test cases, 25 findings).',
+        'Led STRIDE threat modeling for a 14-microservice CIAM platform; 52-finding risk register (7 Critical, 16 High) with a remediation roadmap. Reviewed CI/CD pipeline security for a mobile banking backend. Tested the Android banking app against 140 MASVS test cases (25 findings, 6 Critical).',
     },
     {
       company: 'Kafein Technology Solutions',
-      role: 'AppSec Senior Consultant',
+      role: 'Application Security Senior Consultant',
       period: '2024 – 2025',
       highlight:
-        'Security assessments and code reviews across Python/Go/Java/TypeScript stacks. Deployed and tuned SAST/SCA/DAST for 10+ client teams. Trained 100+ developers on OWASP API Top 10.',
+        'Security assessments and secure code reviews for Python, Go, Java and TypeScript products. Set up SAST, SCA, DAST and secrets scanning for 10+ client teams. Triaged bug bounty and VDP reports. Trained 100+ developers on the OWASP API Security Top 10.',
     },
     {
-      company: 'Future Technology Systems (Kuwait)',
-      role: 'Penetration Tester',
+      company: 'Future Technology Systems Co. (FutureTEC), Kuwait',
+      role: 'Penetration Tester & Application Security Senior Engineer',
       period: '2023 – 2024',
       highlight:
-        '15+ full-stack pentests for enterprise and financial sector clients; 200+ critical findings; 90% remediation within SLA. Advised three banks on zero-trust network redesign.',
+        '15+ penetration tests covering web, API, internal infrastructure and network. 200+ findings including SQL injection, authentication and access control issues; 90% fixed within SLA. Advised three banks on zero-trust network redesign.',
     },
     {
       company: 'Barikat Cybersecurity',
-      role: 'Red Team Senior Specialist',
+      role: 'Penetration Tester & Red Team Senior Specialist',
       period: '2022 – 2023',
       highlight:
-        'Web, mobile, API, network, and physical assessments for aviation sector. AD attack chains mapped to MITRE ATT&CK. Re-tested all findings and certified fixes before systems went live.',
+        'Web, mobile, API, network and physical security assessments for aviation clients. Worked with IT/OT teams on remediation and retested every finding before go-live.',
     },
     {
       company: 'Ana Sigorta',
-      role: 'InfoSec Senior Specialist',
+      role: 'Information Security Senior Specialist',
       period: '2021 – 2022',
       highlight:
-        'Oversaw risk analysis, control rollout, and PCI-DSS audit; 100% pass on first attempt. Negotiated vendor contracts saving $15K.',
+        'Red team and vulnerability assessments across web, network and cloud. Owned risk analysis, control rollout and the PCI-DSS audit; passed on the first attempt.',
     },
     {
       company: 'Intertech',
       role: 'Application Security Engineer',
       period: '2020 – 2021',
       highlight:
-        'Built security gates into 700+ Jenkins pipelines (SAST, SCA, DAST, secrets). Led 8-month Security Champion Academy for 500+ developers; 30% fewer OWASP flaws.',
+        'Started in pentesting, then led DevSecOps; added security gates to 700+ Jenkins pipelines. Ran an 8-month security academy for 500+ developers; later scans showed 30% fewer OWASP Top 10 issues.',
+    },
+    {
+      company: 'Various companies incl. PwC Turkey',
+      role: 'Cybersecurity Consultant (part-time)',
+      period: '2016 – 2020',
+      highlight:
+        'Part-time consulting for energy, aviation, defense and technology clients while studying Computer Engineering. PwC Turkey internship: web, network and mobile testing.',
     },
   ] as ExperienceEntry[],
   certifications: [
-    { name: 'OSCP+ / OSCP', detail: '— OffSec' },
+    { name: 'OSCP+ / OSCP', detail: '— OffSec, 2025' },
     { name: 'eWPTx', detail: '— INE, 2026' },
     { name: 'eMAPT', detail: '— INE, 2026' },
-    { name: 'Certified API Security Pro', detail: '(CASP)' },
-    { name: 'Certified DevSecOps Pro', detail: '(CDP)' },
-    { name: 'CEH Master' },
-    { name: 'ISO27001 Lead Auditor' },
+    { name: 'Certified API Security Professional', detail: '(CASP) — Practical DevSecOps, 2026' },
+    { name: 'Certified DevSecOps Professional', detail: '(CDP) — Practical DevSecOps, 2024' },
+    { name: 'CEH Master', detail: '— EC-Council, 2023 (expired 2026)' },
+    { name: 'ISO 27001 Lead Auditor', detail: '— 2022 (expired 2025)' },
   ] as Certification[],
   stack: [
-    'Python / Bash / PowerShell / Go',
-    'Burp Suite Pro / Metasploit / BloodHound',
-    'Fortify / SonarQube / Snyk / Nexus IQ',
+    'Python / Bash / PowerShell / JavaScript / Java',
+    'Burp Suite / Metasploit / BloodHound / Nmap',
+    'Fortify / SonarQube / Coverity / Nexus IQ',
     'Jenkins / GitLab CI / GitHub Actions',
-    'AWS / Azure / GCP / Docker / Kubernetes',
+    'AWS / Azure / Docker / Kubernetes',
   ],
   interests: 'CTF Player (HTB), Shotokan Karate, Analog Photography, Strategy Gaming (EU4, Dota 2).',
 };
@@ -97,11 +111,11 @@ export const EVIDENCE_METRICS: EvidenceMetric[] = [
     label: 'Credential',
     value: 'OSCP+',
     valueDetail: '— OffSec',
-    detail: 'eWPTx — INE · eMAPT — INE · CEH Master',
+    detail: 'eWPTx — INE · eMAPT — INE · CASP',
   },
   {
     label: 'Experience',
-    value: '8+ years',
+    value: '10+ years',
     detail: 'banking · telecom · aviation · insurance · e-commerce',
   },
   {
@@ -139,10 +153,10 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
     cve: 'CVE-2026-31974',
     title: 'SSRF in OpenProject',
     vendor: 'OpenProject',
-    severity: 'Medium',
+    severity: 'Low',
     year: '2026',
     description:
-      'Server-Side Request Forgery in OpenProject. Coordinated disclosure with the OpenProject security team; fix merged upstream in v17.2.0.',
+      'Blind SSRF through webhooks and the SMTP test endpoint. Reported independently through the YesWeHack OpenProject program and credited in the advisory. Fixed in v17.2.0.',
     link: 'https://github.com/opf/openproject/security/advisories/GHSA-9wr7-j98g-2jh3',
     role: 'Reporter',
   },
