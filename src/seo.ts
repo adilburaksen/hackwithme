@@ -15,14 +15,14 @@ const NAME_SUFFIX = 'Adil Burak (0racLe)';
 
 const DEFS: Record<string, { title: string; description: string; index?: boolean }> = {
   '/': {
-    title: `${NAME_SUFFIX} — Application Security & Red Team Engineer`,
+    title: `${NAME_SUFFIX} — Application Security Engineer`,
     description:
-      'Adil Burak (0racLe) — OSCP+ Application Security & Red Team Engineer. Penetration testing, API security, secure SDLC, DevSecOps. Published CVE, Bugcrowd Top 100, and public disclosures.',
+      'Adil Burak (0racLe) — OSCP+ Application Security Engineer. Penetration testing, API security, secure SDLC, DevSecOps. Published CVE, Bugcrowd Top 100, and public disclosures.',
   },
   '/about/': {
     title: `About — ${NAME_SUFFIX}`,
     description:
-      'Senior Application Security & Red Team Engineer with 8+ years across banking, telecom, aviation, insurance, and e-commerce. Trajectory, certifications, and toolset.',
+      'Senior Application Security Engineer with 10+ years across banking, telecom, aviation, insurance, and e-commerce. Trajectory, certifications, and toolset.',
   },
   '/writing/': {
     title: `Writing — ${NAME_SUFFIX}`,
