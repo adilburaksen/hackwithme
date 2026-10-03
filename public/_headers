@@ -12,3 +12,11 @@
 # Long-cache fingerprinted build assets
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Netrunner mode media
+/netrunner/*.mp3
+  Cache-Control: public, max-age=604800
+/netrunner/*.ogg
+  Cache-Control: public, max-age=604800
+/netrunner/*.webp
+  Cache-Control: public, max-age=604800
