@@ -22,16 +22,17 @@
 }
 
 [data-theme='light'] {
-  --canvas: #eef1e8;
-  --surface-1: #e3e8dc;
-  --text-primary: #0d1210;
-  --text-muted: #4c5850;
-  --border-subtle: #cdd5c6;
-  --border-strong: #9eab9a;
-  --signal: #4f5f00;
-  --signal-hover: #006f7a;
-  --ice: #006f7a;
-  --grid: rgba(79, 95, 0, 0.05);
+  /* Daylight: the scene's own palette — acid-tinted paper, black ink, ice-cyan accent. */
+  --canvas: #f3f5dd;
+  --surface-1: #e9edc8;
+  --text-primary: #0b0d0c;
+  --text-muted: #4b5140;
+  --border-subtle: #d3d8ab;
+  --border-strong: #8d9466;
+  --signal: #00727d;
+  --signal-hover: #0b0d0c;
+  --ice: #00727d;
+  --grid: rgba(11, 13, 12, 0.045);
   --focus: var(--ice);
 }
 
@@ -123,4 +124,21 @@ html.nr-page body::after {
 body.consent-open { padding-bottom: 11rem; }
 @media (min-width: 640px) {
   body.consent-open { padding-bottom: 5.5rem; }
+}
+
+[data-theme='light'] ::selection {
+  background: #0b0d0c;
+  color: #e4ff3a;
+}
+
+/* Daylight: the Netrunner entry keeps the night palette — black plate, acid type. */
+[data-theme='light'] .nr-cta {
+  background: #0b0d0c;
+  border-color: #0b0d0c;
+  color: #e4ff3a;
+}
+[data-theme='light'] .nr-cta:hover {
+  background: #00727d;
+  border-color: #00727d;
+  color: #f3f5dd;
 }
