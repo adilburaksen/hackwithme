@@ -18,7 +18,7 @@ const PageIntro: React.FC<PageIntroProps> = ({ command, title, meta, metaClassNa
     <div className="mb-3.5 font-mono text-xs text-muted">
       <span className="text-signal">$</span> {command}
     </div>
-    <h1 className="mb-2.5 max-w-reading font-display font-[550] text-[28px] leading-[1.12] tracking-[-0.01em] sm:text-[38px]">
+    <h1 className="mb-2.5 max-w-reading font-display font-semibold uppercase text-[28px] leading-[1.08] tracking-[0.02em] [text-wrap:balance] sm:text-[40px]">
       {title}
     </h1>
     {meta && <div className={metaClassName ?? 'font-mono text-xs text-muted'}>{meta}</div>}
