@@ -2,38 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Signal Archive semantic tokens ────────────────────────────────────
-   Dark is the default (:root); light overrides under [data-theme='light'].
-   Components consume the Tailwind semantic names mapped in tailwind.config.js,
-   never these variables directly. */
+/* ── Netrunner semantic tokens ───────────────────────────────────────
+   Shared with Netrunner mode (src/netrunner/netrunner.css): acid signal,
+   ice-cyan secondary, green-biased neutrals. Dark is the default (:root);
+   light ("daylight") overrides under [data-theme='light']. Components consume
+   the Tailwind semantic names mapped in tailwind.config.js. */
 :root {
-  --canvas: #0b0b0a;
-  --surface-1: #131210;
-  --text-primary: #f1ece0;
-  --text-muted: #9a9383;
-  --border-subtle: #26231e;
-  --border-strong: #3a362e;
-  --signal: #ff6b35;
-  --signal-hover: #ff8c5c;
-  --focus: var(--signal);
+  --canvas: #07090a;
+  --surface-1: #0e1213;
+  --text-primary: #e9efe6;
+  --text-muted: #8e9a8f;
+  --border-subtle: #1d2422;
+  --border-strong: #34403a;
+  --signal: #e4ff3a;
+  --signal-hover: #3df5ff;
+  --ice: #3df5ff;
+  --grid: rgba(228, 255, 58, 0.035);
+  --focus: var(--ice);
 }
 
 [data-theme='light'] {
-  --canvas: #f6f1e4;
-  --surface-1: #ece7d9;
-  --text-primary: #181613;
-  --text-muted: #5f594d;
-  --border-subtle: #ddd6c4;
-  --border-strong: #bfb6a0;
-  --signal: #a83b0f;
-  --signal-hover: #8a3009;
-  --focus: var(--signal);
+  --canvas: #eef1e8;
+  --surface-1: #e3e8dc;
+  --text-primary: #0d1210;
+  --text-muted: #4c5850;
+  --border-subtle: #cdd5c6;
+  --border-strong: #9eab9a;
+  --signal: #4f5f00;
+  --signal-hover: #006f7a;
+  --ice: #006f7a;
+  --grid: rgba(79, 95, 0, 0.05);
+  --focus: var(--ice);
 }
 
 body {
   background-color: var(--canvas);
   color: var(--text-primary);
-  font-family: 'Newsreader', serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.24s ease, color 0.24s ease;
 }
@@ -44,11 +53,35 @@ body {
   color: var(--canvas);
 }
 
+/* Faint scanlines over the whole frame (dark theme only); never intercepts input. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 3px);
+  opacity: 0.5;
+}
+[data-theme='light'] body::after,
+html.nr-page body::after {
+  display: none;
+}
+
+/* Cut-corner frame for static containers (never on focusable controls: the
+   clip would hide the focus ring). */
+.cut {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.cut-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
 /* Global focus ring: 2px signal ring at 2px offset, simulated with a double
    box-shadow so it reads on both themes without shifting layout. */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--signal);
+  box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--focus);
   border-radius: 2px;
 }
 

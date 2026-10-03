@@ -39,6 +39,12 @@ const DEFS: Record<string, { title: string; description: string; index?: boolean
     description:
       'Published CVE and 29 public bug-bounty acknowledgments across Bugcrowd, YesWeHack, Immunefi, and Google VRP by Adil Burak (0racLe).',
   },
+  '/netrunner/': {
+    title: `Netrunner mode — ${NAME_SUFFIX}`,
+    description:
+      'An interactive, explorable version of hackwith.me. Breach logs, data shards, a dossier and a CV behind a layer of ICE.',
+    index: false,
+  },
 };
 
 const NOT_FOUND_META = {

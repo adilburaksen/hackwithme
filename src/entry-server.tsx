@@ -10,6 +10,7 @@ export const PRERENDER_ROUTES: { path: string; out: string }[] = [
   { path: '/writing/', out: 'writing/index.html' },
   { path: '/projects/', out: 'projects/index.html' },
   { path: '/disclosures/', out: 'disclosures/index.html' },
+  { path: '/netrunner/', out: 'netrunner/index.html' },
 ];
 
 /** The catch-all 404 document Netlify serves for unmatched paths. */
