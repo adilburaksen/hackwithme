@@ -8,7 +8,7 @@ import React, {
 import { View } from './types';
 
 /** Canonical, trailing-slash route paths. `/` is the exception. */
-export const ROUTES = ['/', '/about/', '/writing/', '/projects/', '/disclosures/'] as const;
+export const ROUTES = ['/', '/about/', '/writing/', '/projects/', '/disclosures/', '/netrunner/'] as const;
 export type RoutePath = (typeof ROUTES)[number];
 
 /** Sentinel path the prerenderer uses to emit 404.html. */
@@ -34,6 +34,8 @@ export function resolveView(path: string): View {
       return View.PROJECTS;
     case '/disclosures/':
       return View.DISCLOSURES;
+    case '/netrunner/':
+      return View.NETRUNNER;
     default:
       return View.NOT_FOUND;
   }

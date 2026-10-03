@@ -43,7 +43,7 @@ const Home: React.FC = () => {
           <div className="font-mono text-xs text-muted">
             <span className="text-signal">$</span> whoami
           </div>
-          <h1 className="mb-1.5 mt-3 font-display font-[550] text-[31px] leading-[1.08] tracking-[-0.01em] sm:text-[44px]">
+          <h1 lang="tr" className="mb-1.5 mt-3 font-display font-semibold uppercase text-[31px] leading-[1.02] tracking-[0.01em] sm:text-[46px]">
             {AUTHOR_FULL_NAME}
           </h1>
           <div className="font-mono text-[12.5px] text-signal sm:text-[13px]">a.k.a. {AUTHOR_ALIAS}</div>
@@ -75,10 +75,10 @@ const Home: React.FC = () => {
           </div>
         </TerminalPanel>
 
-        <aside className="self-start rounded-panel border border-subtle">
+        <aside className="cut self-start border border-subtle bg-surface">
           <div className="flex justify-between border-b border-subtle px-4 py-3 font-mono text-[10.5px] uppercase tracking-[0.14em] text-muted sm:px-5 sm:text-[11px]">
             <span>
-              <span className="text-signal">#</span> Evidence
+              <span className="text-signal">//</span> Evidence
             </span>
             <span>ledger · {String(EVIDENCE_METRICS.length).padStart(2, '0')}</span>
           </div>
@@ -132,7 +132,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Availability */}
-      <section className="rounded-panel border border-subtle px-[18px] py-4 font-mono text-xs sm:px-6">
+      <section className="cut border border-subtle bg-surface px-[18px] py-4 font-mono text-xs sm:px-6">
         {/* Mobile: stacked */}
         <div className="sm:hidden">
           <div className="text-muted">

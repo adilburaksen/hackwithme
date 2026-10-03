@@ -2,6 +2,7 @@ import React from 'react';
 import SiteBrand from './SiteBrand';
 import CommandNavigation from './CommandNavigation';
 import ThemeToggle from './ThemeToggle';
+import NetrunnerLink from './NetrunnerLink';
 import { SHELL_X } from '../styles';
 
 /**
@@ -15,9 +16,13 @@ const SiteHeader: React.FC = () => (
       <SiteBrand />
       <div className="hidden items-center gap-9 sm:flex">
         <CommandNavigation variant="inline" />
-        <ThemeToggle />
+        <div className="flex items-center gap-2.5">
+          <NetrunnerLink />
+          <ThemeToggle />
+        </div>
       </div>
-      <div className="sm:hidden">
+      <div className="flex items-center gap-2 sm:hidden">
+        <NetrunnerLink />
         <ThemeToggle />
       </div>
     </div>

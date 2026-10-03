@@ -8,6 +8,7 @@ import Writing from './components/Writing';
 import Projects from './components/Projects';
 import Disclosures from './components/Disclosures';
 import NotFound from './components/NotFound';
+import Netrunner from './netrunner/Netrunner';
 
 const RouteView: React.FC = () => {
   const { path } = useRouter();
@@ -27,12 +28,21 @@ const RouteView: React.FC = () => {
   }
 };
 
-/** `initialPath` is supplied during prerender; the client reads window.location. */
-const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => (
-  <RouterProvider initialPath={initialPath}>
+/** Netrunner mode owns the whole viewport; every other route uses the shell. */
+const Frame: React.FC = () => {
+  const { path } = useRouter();
+  if (resolveView(path) === View.NETRUNNER) return <Netrunner />;
+  return (
     <AppShell>
       <RouteView />
     </AppShell>
+  );
+};
+
+/** `initialPath` is supplied during prerender; the client reads window.location. */
+const App: React.FC<{ initialPath?: string }> = ({ initialPath }) => (
+  <RouterProvider initialPath={initialPath}>
+    <Frame />
   </RouterProvider>
 );
 

@@ -2,38 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Signal Archive semantic tokens ────────────────────────────────────
-   Dark is the default (:root); light overrides under [data-theme='light'].
-   Components consume the Tailwind semantic names mapped in tailwind.config.js,
-   never these variables directly. */
+/* ── Netrunner semantic tokens ───────────────────────────────────────
+   Shared with Netrunner mode (src/netrunner/netrunner.css): acid signal,
+   ice-cyan secondary, green-biased neutrals. Dark is the default (:root);
+   light ("daylight") overrides under [data-theme='light']. Components consume
+   the Tailwind semantic names mapped in tailwind.config.js. */
 :root {
-  --canvas: #0b0b0a;
-  --surface-1: #131210;
-  --text-primary: #f1ece0;
-  --text-muted: #9a9383;
-  --border-subtle: #26231e;
-  --border-strong: #3a362e;
-  --signal: #ff6b35;
-  --signal-hover: #ff8c5c;
-  --focus: var(--signal);
+  --canvas: #07090a;
+  --surface-1: #0e1213;
+  --text-primary: #e9efe6;
+  --text-muted: #8e9a8f;
+  --border-subtle: #1d2422;
+  --border-strong: #34403a;
+  --signal: #e4ff3a;
+  --signal-hover: #3df5ff;
+  --ice: #3df5ff;
+  --grid: rgba(228, 255, 58, 0.035);
+  --focus: var(--ice);
 }
 
 [data-theme='light'] {
-  --canvas: #f6f1e4;
-  --surface-1: #ece7d9;
-  --text-primary: #181613;
-  --text-muted: #5f594d;
-  --border-subtle: #ddd6c4;
-  --border-strong: #bfb6a0;
-  --signal: #a83b0f;
-  --signal-hover: #8a3009;
-  --focus: var(--signal);
+  /* Daylight: the scene's own palette — acid-tinted paper, black ink, ice-cyan accent. */
+  --canvas: #f3f5dd;
+  --surface-1: #e9edc8;
+  --text-primary: #0b0d0c;
+  --text-muted: #4b5140;
+  --border-subtle: #d3d8ab;
+  --border-strong: #8d9466;
+  --signal: #00727d;
+  --signal-hover: #0b0d0c;
+  --ice: #00727d;
+  --grid: rgba(11, 13, 12, 0.045);
+  --focus: var(--ice);
 }
 
 body {
   background-color: var(--canvas);
   color: var(--text-primary);
-  font-family: 'Newsreader', serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.24s ease, color 0.24s ease;
 }
@@ -44,11 +54,35 @@ body {
   color: var(--canvas);
 }
 
+/* Faint scanlines over the whole frame (dark theme only); never intercepts input. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 3px);
+  opacity: 0.5;
+}
+[data-theme='light'] body::after,
+html.nr-page body::after {
+  display: none;
+}
+
+/* Cut-corner frame for static containers (never on focusable controls: the
+   clip would hide the focus ring). */
+.cut {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.cut-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+
 /* Global focus ring: 2px signal ring at 2px offset, simulated with a double
    box-shadow so it reads on both themes without shifting layout. */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--signal);
+  box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--focus);
   border-radius: 2px;
 }
 
@@ -90,4 +124,21 @@ body {
 body.consent-open { padding-bottom: 11rem; }
 @media (min-width: 640px) {
   body.consent-open { padding-bottom: 5.5rem; }
+}
+
+[data-theme='light'] ::selection {
+  background: #0b0d0c;
+  color: #e4ff3a;
+}
+
+/* Daylight: the Netrunner entry keeps the night palette — black plate, acid type. */
+[data-theme='light'] .nr-cta {
+  background: #0b0d0c;
+  border-color: #0b0d0c;
+  color: #e4ff3a;
+}
+[data-theme='light'] .nr-cta:hover {
+  background: #00727d;
+  border-color: #00727d;
+  color: #f3f5dd;
 }
