@@ -27,6 +27,9 @@ const AvailabilityLinks: React.FC<{ className?: string }> = ({ className }) => (
     <ExternalLink href={AUTHOR_PROFILE.socials.x} className="transition-colors hover:text-signal">
       x
     </ExternalLink>
+    <a href={`mailto:${AUTHOR_PROFILE.socials.email}`} className="transition-colors hover:text-signal">
+      email
+    </a>
   </div>
 );
 
