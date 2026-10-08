@@ -26,6 +26,7 @@ export const AUTHOR_PROFILE = {
     github: 'https://github.com/adilburaksen',
     x: 'https://x.com/adilburaksen',
     website: 'https://hackwith.me/',
+    email: 'adilburaksen@proton.me',
   },
   experience: [
     {
