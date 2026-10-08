@@ -15,9 +15,9 @@ export interface Certification {
 
 export const AUTHOR_PROFILE = {
   role: 'Senior Application Security Engineer',
-  location: 'Istanbul, Turkey · Open to Europe / UK / Remote',
+  location: 'Istanbul, Turkey · Open to Europe / US / UAE / Remote',
   availability: {
-    statement: 'Open to Europe / UK / Remote',
+    statement: 'Open to Europe / US / UAE / Remote',
     location: 'Istanbul, Turkey',
   },
   bio: 'Application security engineer with 10+ years in offensive and application security across banking, telecom, aviation, insurance and e-commerce. Web, API and mobile security testing, threat modeling and CI/CD security. Bugcrowd Top 100 (2018), 150+ validated vulnerabilities, credited for CVE-2026-31974 (OpenProject). OSCP+, eWPTx, eMAPT, CASP.',
