@@ -65,12 +65,12 @@ export const SCENE_NODES: SceneNode[] = [
 ];
 
 export const VOICE_SRC: Record<VoiceId, string> = {
-  intro: asset('vo-intro.mp3'),
-  terminals: asset('vo-terminals.mp3'),
-  shards: asset('vo-shards.mp3'),
-  dossier: asset('vo-dossier.mp3'),
-  vault: asset('vo-ice.mp3'),
-  door: asset('vo-door.mp3'),
+  intro: asset('vo-intro.m4a'),
+  terminals: asset('vo-terminals.m4a'),
+  shards: asset('vo-shards.m4a'),
+  dossier: asset('vo-dossier.m4a'),
+  vault: asset('vo-ice.m4a'),
+  door: asset('vo-door.m4a'),
 };
 
 export const AMBIENT_SRC = { ogg: asset('ambient.ogg'), mp3: asset('ambient.mp3') };
