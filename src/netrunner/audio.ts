@@ -2,6 +2,8 @@ import { AMBIENT_LOOP_SECONDS, AMBIENT_SRC, VOICE_SRC, VoiceId } from './scene';
 
 const MUSIC_LEVEL = 0.32;
 const MUSIC_DUCKED = 0.1;
+const VOICE_TAIL_FADE = 0.08;
+const VOICE_STOP_FADE = 0.12;
 
 type Ctx = AudioContext;
 
@@ -21,6 +23,8 @@ export class NetrunnerAudio {
   private buffers = new Map<string, Promise<AudioBuffer>>();
   private musicSrc: AudioBufferSourceNode | null = null;
   private voiceSrc: AudioBufferSourceNode | null = null;
+  // Per-line envelope so a line never ends on a hard cut (natural end or interrupt).
+  private voiceEnv: GainNode | null = null;
   private noise: AudioBuffer;
 
   constructor() {
@@ -139,26 +143,44 @@ export class NetrunnerAudio {
     this.stopVoice();
     const src = this.ctx.createBufferSource();
     src.buffer = buf;
-    src.connect(this.voice);
+    const env = this.ctx.createGain();
+    src.connect(env);
+    env.connect(this.voice);
     this.voiceSrc = src;
+    this.voiceEnv = env;
     if (this.musicSrc) this.ramp(this.music.gain, MUSIC_DUCKED, 0.25);
     this.glitch(0.12);
-    src.start(this.ctx.currentTime + 0.08);
+    const t0 = this.ctx.currentTime + 0.08;
+    // Soften the last 80 ms; some TTS takes stop right on the final syllable.
+    const tail = Math.min(VOICE_TAIL_FADE, buf.duration / 4);
+    env.gain.setValueAtTime(1, t0 + buf.duration - tail);
+    env.gain.linearRampToValueAtTime(0, t0 + buf.duration);
+    src.start(t0);
     await new Promise<void>((resolve) => {
       src.onended = () => resolve();
     });
     if (this.voiceSrc === src) {
       this.voiceSrc = null;
+      this.voiceEnv = null;
       if (this.musicSrc) this.ramp(this.music.gain, MUSIC_LEVEL, 1.2);
     }
   }
 
   stopVoice() {
     const src = this.voiceSrc;
+    const env = this.voiceEnv;
     if (!src) return;
     this.voiceSrc = null;
+    this.voiceEnv = null;
+    // Fade out instead of cutting, which clicks when another line interrupts.
+    const t = this.ctx.currentTime;
+    if (env) {
+      env.gain.cancelScheduledValues(t);
+      env.gain.setValueAtTime(env.gain.value, t);
+      env.gain.linearRampToValueAtTime(0, t + VOICE_STOP_FADE);
+    }
     try {
-      src.stop();
+      src.stop(t + VOICE_STOP_FADE + 0.01);
     } catch {
       /* already stopped */
     }
