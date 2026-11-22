@@ -17,7 +17,7 @@ const DEFS: Record<string, { title: string; description: string; index?: boolean
   '/': {
     title: `${NAME_SUFFIX} — Application Security Engineer`,
     description:
-      'Adil Burak (0racLe) — OSCP+ Application Security Engineer. Penetration testing, API security, secure SDLC, DevSecOps. Published CVE, Bugcrowd Top 100, and public disclosures.',
+      'Adil Burak (0racLe) — OSCP+ Application Security Engineer. Penetration testing, API security, secure SDLC, DevSecOps. Published CVE and public disclosures.',
   },
   '/about/': {
     title: `About — ${NAME_SUFFIX}`,
