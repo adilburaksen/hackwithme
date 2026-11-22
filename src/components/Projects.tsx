@@ -21,19 +21,25 @@ const Projects: React.FC = () => {
             className="grid gap-3 border-b border-subtle py-7 sm:grid-cols-[130px_1fr] sm:gap-8"
           >
             <div className="font-mono text-xs text-muted">
-              <div>{project.year}</div>
-              <div className="mt-2">
+              {project.year && <div>{project.year}</div>}
+              <div className={project.year ? 'mt-2' : undefined}>
                 <Status>{project.status}</Status>
               </div>
             </div>
             <div className="max-w-reading">
-              <ExternalLink
-                href={project.link}
-                className="font-mono text-[18px] text-primary [overflow-wrap:anywhere]"
-                arrowClassName="text-signal opacity-70"
-              >
-                {project.name}
-              </ExternalLink>
+              {project.link ? (
+                <ExternalLink
+                  href={project.link}
+                  className="font-mono text-[18px] text-primary [overflow-wrap:anywhere]"
+                  arrowClassName="text-signal opacity-70"
+                >
+                  {project.name}
+                </ExternalLink>
+              ) : (
+                <div className="font-mono text-[18px] text-primary [overflow-wrap:anywhere]">
+                  {project.name}
+                </div>
+              )}
               <p className="mt-3 text-[15px] leading-[1.6] text-muted">{project.description}</p>
             </div>
           </article>

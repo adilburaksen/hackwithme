@@ -11,9 +11,10 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  link: string;
-  year: string;
-  status: 'Active' | 'Archived' | 'Researching';
+  /** Omitted for private projects that have no public URL. */
+  link?: string;
+  year?: string;
+  status: 'Active' | 'Archived' | 'Researching' | 'Private';
 }
 
 export enum View {

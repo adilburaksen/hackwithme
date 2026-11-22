@@ -48,7 +48,7 @@ export const BreachLogs: React.FC = () => {
             <Ext href={c.link}>advisory</Ext>
           </article>
         ))}
-        {PROJECTS.map((p) => (
+        {PROJECTS.filter((p): p is typeof p & { link: string } => Boolean(p.link)).map((p) => (
           <article key={p.id} className="nr-log">
             <div className="nr-log-head">
               <span className="nr-tag">exploit</span>
@@ -83,13 +83,24 @@ export const BreachLogs: React.FC = () => {
 export const DataShards: React.FC = () => (
   <>
     <Block title="projects">
-      {PROJECTS.map((p) => (
-        <Ext key={p.id} href={p.link} className="nr-shard">
-          <span className="nr-shard-id">{p.year}</span>
-          <span className="nr-shard-title">{p.name}</span>
-          <span className="nr-shard-meta">{p.status}</span>
-        </Ext>
-      ))}
+      {PROJECTS.map((p) => {
+        const body = (
+          <>
+            <span className="nr-shard-id">{p.year}</span>
+            <span className="nr-shard-title">{p.name}</span>
+            <span className="nr-shard-meta">{p.status}</span>
+          </>
+        );
+        return p.link ? (
+          <Ext key={p.id} href={p.link} className="nr-shard">
+            {body}
+          </Ext>
+        ) : (
+          <div key={p.id} className="nr-shard">
+            {body}
+          </div>
+        );
+      })}
     </Block>
     <Block title="write-ups">
       {RESEARCH_POSTS.map((post) => (

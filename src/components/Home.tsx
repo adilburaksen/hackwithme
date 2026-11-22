@@ -107,13 +107,17 @@ const Home: React.FC = () => {
           <div className="mb-2 font-mono text-xs text-muted">
             {project.year} <span className="text-signal">/</span> {project.status.toLowerCase()}
           </div>
-          <ExternalLink
-            href={project.link}
-            className="font-mono text-[16px] text-primary [overflow-wrap:anywhere]"
-            arrowClassName="text-signal opacity-70"
-          >
-            {project.name}
-          </ExternalLink>
+          {project.link ? (
+            <ExternalLink
+              href={project.link}
+              className="font-mono text-[16px] text-primary [overflow-wrap:anywhere]"
+              arrowClassName="text-signal opacity-70"
+            >
+              {project.name}
+            </ExternalLink>
+          ) : (
+            <div className="font-mono text-[16px] text-primary [overflow-wrap:anywhere]">{project.name}</div>
+          )}
           <p className="mt-3 text-[15px] leading-[1.6] text-muted sm:max-w-[30rem]">
             {project.description}
           </p>

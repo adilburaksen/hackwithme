@@ -138,6 +138,13 @@ export const PROJECTS: Project[] = [
     year: '2025',
     status: 'Active',
   },
+  {
+    id: 'hunt-ledger',
+    name: 'Hunt Ledger',
+    description:
+      'Self-hosted Next.js / TypeScript research ledger and dashboard for bug bounty work on Bugcrowd. Tracks a hunt board, hunt suggestions, reports, programs, rewards, recurring vulnerability patterns, revisit queues and sessions, integrated with a multi-agent hunting workflow.',
+    status: 'Private',
+  },
 ];
 
 export const PROJECTS_CURATION_NOTE =
