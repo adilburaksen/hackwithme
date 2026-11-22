@@ -20,7 +20,7 @@ export const AUTHOR_PROFILE = {
     statement: 'Open to Europe / US / UAE / Remote',
     location: 'Istanbul, Turkey',
   },
-  bio: 'Application security engineer with 10+ years in offensive and application security across banking, telecom, aviation, insurance and e-commerce. Web, API and mobile security testing, threat modeling and CI/CD security. Bugcrowd Top 100 (2018), 150+ validated vulnerabilities, credited for CVE-2026-31974 (OpenProject). OSCP+, eWPTx, eMAPT, CASP.',
+  bio: 'Application security engineer with 10+ years in offensive and application security across banking, telecom, aviation, insurance and e-commerce. Web, API and mobile security testing, threat modeling and CI/CD security. 150+ validated vulnerabilities, credited for CVE-2026-31974 (OpenProject). OSCP+, eWPTx, eMAPT, CASP.',
   socials: {
     linkedin: 'https://www.linkedin.com/in/adilburaksen/',
     github: 'https://github.com/adilburaksen',
@@ -34,7 +34,7 @@ export const AUTHOR_PROFILE = {
       role: 'Independent Security Researcher (Bug Bounty)',
       period: '2018 – Present',
       highlight:
-        'Bugcrowd Top 100 (2018). 400+ reports and 150+ validated vulnerabilities on Bugcrowd, Synack Red Team, YesWeHack, Intigriti and Immunefi. Credited for CVE-2026-31974 (OpenProject). Broken Function Level Authorization at Indeed reclassified from Informational to P1 after re-triage ($10,000 bounty).',
+        '400+ reports and 150+ validated vulnerabilities on Bugcrowd, Synack Red Team, YesWeHack, Intigriti and Immunefi. Credited for CVE-2026-31974 (OpenProject). Broken Function Level Authorization at Indeed reclassified from Informational to P1 after re-triage ($10,000 bounty).',
     },
     {
       company: 'Abu Dhabi Commercial Bank (ADCB)',
@@ -105,8 +105,8 @@ export const AUTHOR_PROFILE = {
   interests: 'CTF Player (HTB), Shotokan Karate, Analog Photography, Strategy Gaming (EU4, Dota 2).',
 };
 
-/** Home Evidence ledger — exactly four rows (frame 1a). Presentation of
-    existing facts; availability deliberately lives elsewhere. */
+/** Home Evidence ledger. Presentation of existing facts; availability
+    deliberately lives elsewhere. */
 export const EVIDENCE_METRICS: EvidenceMetric[] = [
   {
     label: 'Credential',
@@ -124,11 +124,6 @@ export const EVIDENCE_METRICS: EvidenceMetric[] = [
     value: 'CVE-2026-31974',
     detail: 'SSRF in OpenProject · fixed in v17.2.0',
   },
-  {
-    label: 'Ranking',
-    value: 'Bugcrowd Top 100',
-    detail: '2018 · 400+ reports · 150+ validated',
-  },
 ];
 
 export const RESEARCH_POSTS: Post[] = writingData as Post[];
@@ -142,6 +137,13 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/adilburaksen/CVE-2025-25257-Exploit-Tool',
     year: '2025',
     status: 'Active',
+  },
+  {
+    id: 'hunt-ledger',
+    name: 'Hunt Ledger',
+    description:
+      'Self-hosted Next.js / TypeScript research ledger and dashboard for bug bounty work on Bugcrowd. Tracks a hunt board, hunt suggestions, reports, programs, rewards, recurring vulnerability patterns, revisit queues and sessions, integrated with a multi-agent hunting workflow.',
+    status: 'Private',
   },
 ];
 
@@ -164,7 +166,7 @@ export const PUBLISHED_CVES: PublishedCVE[] = [
 ];
 
 export const ACKNOWLEDGMENTS_INTRO =
-  'Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. Bugcrowd Top 100 (2018) with 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, and Google VRP.';
+  'Companies that have publicly acknowledged my responsible disclosures across bug bounty platforms. 400+ reports submitted, 150+ validated across Bugcrowd, YesWeHack, Immunefi, and Google VRP.';
 
 export const ACKNOWLEDGMENTS: Acknowledgment[] = [
   // Bugcrowd

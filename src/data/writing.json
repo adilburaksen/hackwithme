@@ -1,5 +1,17 @@
 [
   {
+    "id": "the-model-cannot-tell-a-table-cell-from-an-instruction",
+    "title": "The model cannot tell a table cell from an instruction",
+    "date": "2026-11-22",
+    "summary": "A technique write-up on indirect prompt injection through structured data in shared-editor AI features: the brief and the table arrive as the same stream of text.",
+    "tags": [
+      "AI",
+      "Security",
+      "Prompt Injection"
+    ],
+    "externalLink": "https://medium.com/@adilburaksen/the-model-cannot-tell-a-table-cell-from-an-instruction-226226fcde61"
+  },
+  {
     "id": "we-keep-updating-ai-but-not-the-abstractions-beneath-it",
     "title": "We Keep Updating AI, But Not the Abstractions Beneath It",
     "date": "2026-09-12",
