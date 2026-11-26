@@ -1,5 +1,17 @@
 [
   {
+    "id": "when-a-sandboxed-result-is-painted-back-into-the-app-origin",
+    "title": "When a ‘sandboxed’ result is painted back into the app origin",
+    "date": "2026-11-26",
+    "summary": "Isolating the code that builds your HTML doesn't isolate the HTML. Once the app renders it in its own origin, it's stored XSS.",
+    "tags": [
+      "Web Security",
+      "Bug Bounty",
+      "JavaScript"
+    ],
+    "externalLink": "https://medium.com/@adilburaksen/when-a-sandboxed-result-is-painted-back-into-the-app-origin-08866de6b3f7"
+  },
+  {
     "id": "the-model-cannot-tell-a-table-cell-from-an-instruction",
     "title": "The model cannot tell a table cell from an instruction",
     "date": "2026-11-22",
