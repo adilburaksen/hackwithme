@@ -1,5 +1,17 @@
 [
   {
+    "id": "a-schema-value-is-not-a-source-literal",
+    "title": "A schema value is not a source literal",
+    "date": "2026-11-27",
+    "summary": "If a code generator pastes schema or config values into its output through an unescaped placeholder, anyone who can influence that schema can influence the program.",
+    "tags": [
+      "Code Generation",
+      "Code Injection",
+      "Supply Chain Security"
+    ],
+    "externalLink": "https://medium.com/@adilburaksen/a-schema-value-is-not-a-source-literal-db48999c19ef"
+  },
+  {
     "id": "when-a-sandboxed-result-is-painted-back-into-the-app-origin",
     "title": "When a ‘sandboxed’ result is painted back into the app origin",
     "date": "2026-11-26",
